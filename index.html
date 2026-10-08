@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>PixelKit Tools - Free Image Tools Online</title>
+  <meta name="description" content="Free online image compressor, resizer and converter. Fast, simple and privacy-friendly image tools.">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f5f6f8;
+      color: #222;
+    }
+
+    header {
+      background: #111;
+      color: white;
+      padding: 22px 15px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 30px;
+    }
+
+    header p {
+      margin-top: 8px;
+      color: #ccc;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 15px;
+    }
+
+    .tool {
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+      text-align: center;
+    }
+
+    .tool h2 {
+      margin-bottom: 10px;
+    }
+
+    .tool p {
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    input[type="file"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      margin: 15px 0;
+    }
+
+    button, .download {
+      display: inline-block;
+      border: none;
+      background: #111;
+      color: white;
+      padding: 13px 22px;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      margin-top: 10px;
+    }
+
+    button:hover, .download:hover {
+      background: #333;
+    }
+
+    #result {
+      margin-top: 20px;
+    }
+
+    #preview {
+      max-width: 100%;
+      max-height: 300px;
+      margin-top: 15px;
+      border-radius: 10px;
+    }
+
+    .tools {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin-top: 25px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 15px;
+      color: #777;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>PixelKit Tools</h1>
+  <p>Free Online Image Tools</p>
+</header>
+
+<div class="container">
+
+  <div class="tool">
+    <h2>🗜️ Image Compressor</h2>
+    <p>Compress your image and reduce its file size.</p>
+
+    <input type="file" id="imageInput" accept="image/*">
+
+    <label>
+      Quality: <span id="qualityValue">70%</span>
+    </label>
+
+    <input type="range" id="quality" min="10" max="100" value="70">
+
+    <br>
+
+    <button onclick="compressImage()">Compress Image</button>
+
+    <div id="result"></div>
+  </div>
+
+  <div class="tools">
+
+    <div class="card">
+      📐
+      <h3>Image Resizer</h3>
+      <p>Resize images easily.</p>
+    </div>
+
+    <div class="card">
+      ✂️
+      <h3>Image Cropper</h3>
+      <p>Crop your images.</p>
+    </div>
+
+    <div class="card">
+      🔄
+      <h3>Image Converter</h3>
+      <p>Convert image formats.</p>
+    </div>
+
+    <div class="card">
+      🌐
+      <h3>WebP Converter</h3>
+      <p>Convert images to WebP.</p>
+    </div>
+
+  </div>
+
+</div>
+
+<footer>
+  © 2026 PixelKit Tools — Free Online Tools
+</footer>
+
+<script>
+
+const quality = document.getElementById("quality");
+const qualityValue = document.getElementById("qualityValue");
+
+quality.addEventListener("input", function() {
+  qualityValue.textContent = quality.value + "%";
+});
+
+function compressImage() {
+
+  const input = document.getElementById("imageInput");
+  const result = document.getElementById("result");
+
+  if (!input.files || !input.files[0]) {
+    result.innerHTML = "<p>Please select an image first.</p>";
+    return;
+  }
+
+  const file = input.files[0];
+  const reader = new FileReader();
+
+  reader.onload = function(event) {
+
+    const img = new Image();
+
+    img.onload = function() {
+
+      const canvas = document.createElement("canvas");
+      const ctx = canvas.getContext("2d");
+
+      canvas.width = img.width;
+      canvas.height = img.height;
+
+      ctx.drawImage(img, 0, 0);
+
+      canvas.toBlob(function(blob) {
+
+        const url = URL.createObjectURL(blob);
+
+        const oldSize = (file.size / 1024).toFixed(1);
+        const newSize = (blob.size / 1024).toFixed(1);
+
+        result.innerHTML = `
+          <p>Original size: ${oldSize} KB</p>
+          <p>Compressed size: ${newSize} KB</p>
+
+          <img id="preview" src="${url}">
+
+          <br>
+
+          <a class="download"
+             href="${url}"
+             download="pixelkit-compressed.jpg">
+             ⬇️ Download Image
+          </a>
+        `;
+
+      }, "image/jpeg", quality.value / 100);
+
+    };
+
+    img.src = event.target.result;
+  };
+
+  reader.readAsDataURL(file);
+}
+
+</script>
+
+</body>
+    </html>
