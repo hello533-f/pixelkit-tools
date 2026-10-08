@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hello533-f.github.io/pixelkit-tools/sitemap.xml
