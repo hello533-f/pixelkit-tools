@@ -4,19 +4,32 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>PixelKit Tools - Free Online Image Tools</title>
+<title>PixelKit Tools - Free Image Compressor, Resizer & Converter</title>
 
 <meta name="google-site-verification" content="r9wi5lSCehY19MbiDT2Uy47NDob3hTKrzY2qcbuhWv0" />
 
-<meta name="description" content="PixelKit Tools offers free online image compressor, resizer, cropper, converter and image information tools. Fast, simple and privacy-friendly.">
+<meta name="description" content="PixelKit Tools provides free online image compressor, resizer, cropper, converter, color picker, background remover and social media image tools. Fast and privacy-friendly.">
 
-<meta name="keywords" content="image compressor, image resizer, image converter, jpg to png, png to jpg, webp converter, image cropper, free image tools">
+<meta name="keywords" content="image compressor, image resizer, image converter, jpg to png, png to jpg, webp converter, image cropper, image color picker, background remover, social media resizer, free image tools">
+
+<meta name="robots" content="index, follow">
+<meta name="author" content="PixelKit Tools">
+
+<meta property="og:title" content="PixelKit Tools - Free Online Image Tools">
+<meta property="og:description" content="Compress, resize, crop, convert and edit images online for free.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://hello533-f.github.io/pixelkit-tools/">
 
 <style>
+
 *{
   box-sizing:border-box;
   margin:0;
   padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
 }
 
 body{
@@ -26,16 +39,20 @@ body{
   line-height:1.6;
 }
 
+/* HEADER */
+
 header{
   background:#111;
   color:white;
-  padding:22px 15px;
+  padding:25px 15px;
   text-align:center;
+  border-bottom:3px solid #f5c542;
 }
 
 .logo{
-  font-size:30px;
+  font-size:32px;
   font-weight:bold;
+  letter-spacing:.5px;
 }
 
 .logo span{
@@ -47,40 +64,64 @@ header p{
   margin-top:5px;
 }
 
+/* CONTAINER */
+
 .container{
-  max-width:1100px;
+  max-width:1150px;
   margin:auto;
   padding:25px 15px;
 }
 
+/* HERO */
+
 .hero{
   text-align:center;
-  padding:25px 10px;
+  padding:45px 15px 35px;
 }
 
 .hero h1{
-  font-size:34px;
-  margin-bottom:8px;
+  font-size:42px;
+  line-height:1.2;
+  margin-bottom:15px;
+}
+
+.hero h1 span{
+  color:#d6a900;
 }
 
 .hero p{
   color:#666;
-  max-width:650px;
+  max-width:720px;
   margin:auto;
+  font-size:17px;
 }
+
+/* TOOL GRID */
 
 .tools-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:18px;
-  margin-top:25px;
+  grid-template-columns:repeat(auto-fit,minmax(235px,1fr));
+  gap:20px;
+  margin-top:15px;
 }
 
 .tool-card{
   background:white;
-  padding:22px;
-  border-radius:15px;
-  box-shadow:0 3px 15px rgba(0,0,0,.07);
+  padding:25px;
+  border-radius:18px;
+  border:1px solid #e8e8e8;
+  box-shadow:0 5px 20px rgba(0,0,0,.06);
+  transition:.25s;
+}
+
+.tool-card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 10px 28px rgba(0,0,0,.11);
+}
+
+.tool-icon{
+  font-size:34px;
+  margin-bottom:10px;
 }
 
 .tool-card h2{
@@ -91,19 +132,46 @@ header p{
 .tool-card p{
   color:#666;
   font-size:14px;
-  margin-bottom:15px;
+  margin-bottom:18px;
 }
+
+/* BUTTON */
+
+button,
+.download{
+  display:inline-block;
+  border:0;
+  background:#111;
+  color:white;
+  padding:12px 20px;
+  border-radius:9px;
+  cursor:pointer;
+  text-decoration:none;
+  margin:5px 3px;
+  font-weight:bold;
+  transition:.2s;
+}
+
+button:hover,
+.download:hover{
+  background:#f5c542;
+  color:#111;
+}
+
+/* TOOL BOX */
 
 .tool-box{
   background:white;
-  margin-top:25px;
-  padding:25px;
-  border-radius:15px;
-  box-shadow:0 3px 15px rgba(0,0,0,.08);
+  margin-top:28px;
+  padding:28px;
+  border-radius:18px;
+  border:1px solid #e8e8e8;
+  box-shadow:0 5px 20px rgba(0,0,0,.07);
 }
 
 .tool-box h2{
   margin-bottom:5px;
+  font-size:25px;
 }
 
 .tool-box > p{
@@ -111,15 +179,25 @@ header p{
   margin-bottom:18px;
 }
 
+/* INPUTS */
+
 input[type=file],
 input[type=number],
+input[type=text],
+textarea,
 select{
   width:100%;
-  padding:12px;
+  padding:13px;
   margin:8px 0 15px;
   border:1px solid #ddd;
-  border-radius:8px;
+  border-radius:9px;
   background:white;
+  font-size:15px;
+}
+
+textarea{
+  min-height:150px;
+  resize:vertical;
 }
 
 input[type=range]{
@@ -131,30 +209,15 @@ label{
   font-weight:bold;
 }
 
-button,
-.download{
-  display:inline-block;
-  border:0;
-  background:#111;
-  color:white;
-  padding:12px 20px;
-  border-radius:8px;
-  cursor:pointer;
-  text-decoration:none;
-  margin:5px 3px;
-}
-
-button:hover,
-.download:hover{
-  background:#333;
-}
+/* PREVIEW */
 
 .preview{
   max-width:100%;
-  max-height:350px;
-  margin:15px auto;
+  max-height:400px;
+  margin:18px auto;
   display:block;
-  border-radius:10px;
+  border-radius:12px;
+  border:1px solid #ddd;
 }
 
 .result{
@@ -164,116 +227,324 @@ button:hover,
 
 .info{
   background:#f8f8f8;
-  padding:15px;
-  border-radius:10px;
+  padding:18px;
+  border-radius:12px;
+  margin-top:15px;
+  text-align:left;
+}
+
+/* COLOR PICKER */
+
+.color-area{
+  text-align:center;
+}
+
+#colorCanvas{
+  max-width:100%;
+  border:2px solid #ddd;
+  border-radius:12px;
+  cursor:crosshair;
+  margin:15px auto;
+  display:block;
+}
+
+.color-result{
+  background:#f7f7f7;
+  padding:20px;
+  border-radius:12px;
   margin-top:15px;
 }
 
-.about{
-  background:white;
-  margin-top:25px;
-  padding:25px;
-  border-radius:15px;
+.color-preview{
+  width:70px;
+  height:70px;
+  border-radius:10px;
+  margin:10px auto;
+  border:2px solid #ddd;
 }
 
-.about h2{
-  margin-bottom:10px;
+/* ABOUT */
+
+.about,
+.faq{
+  background:white;
+  margin-top:28px;
+  padding:28px;
+  border-radius:18px;
+  border:1px solid #e8e8e8;
+}
+
+.about h2,
+.faq h2{
+  margin-bottom:12px;
 }
 
 .about p{
   color:#555;
-  margin-bottom:12px;
+  margin-bottom:13px;
 }
+
+/* FAQ */
+
+.faq-item{
+  padding:15px 0;
+  border-bottom:1px solid #eee;
+}
+
+.faq-item:last-child{
+  border-bottom:0;
+}
+
+.faq-item h3{
+  font-size:17px;
+  margin-bottom:5px;
+}
+
+.faq-item p{
+  color:#666;
+}
+
+/* FOOTER */
 
 footer{
   background:#111;
   color:#bbb;
   text-align:center;
-  padding:25px 15px;
-  margin-top:30px;
+  padding:30px 15px;
+  margin-top:35px;
+}
+
+footer strong{
+  color:#f5c542;
 }
 
 .hidden{
   display:none;
 }
 
+/* MOBILE */
+
 @media(max-width:600px){
+
+  .hero{
+    padding:30px 10px;
+  }
+
   .hero h1{
-    font-size:27px;
+    font-size:30px;
+  }
+
+  .hero p{
+    font-size:15px;
   }
 
   .logo{
-    font-size:26px;
+    font-size:27px;
   }
 
   .tool-box{
-    padding:18px;
+    padding:20px;
   }
+
+  .tool-box h2{
+    font-size:22px;
+  }
+
+  button,
+  .download{
+    width:100%;
+    text-align:center;
+    margin:5px 0;
+  }
+
 }
+
 </style>
 </head>
 
 <body>
 
 <header>
-  <div class="logo">Pixel<span>Kit</span> Tools</div>
+
+  <div class="logo">
+    Pixel<span>Kit</span> Tools
+  </div>
+
   <p>Free Online Image Tools</p>
+
 </header>
+
 
 <main class="container">
 
+
 <section class="hero">
-  <h1>Free Online Image Tools</h1>
+
+  <h1>
+    Free <span>Online Image Tools</span>
+  </h1>
+
   <p>
-    Compress, resize, crop and convert your images quickly.
-    Simple, fast and privacy-friendly tools.
+    Compress, resize, crop, convert and edit your images easily.
+    PixelKit Tools provides simple, fast and privacy-friendly image tools.
   </p>
+
 </section>
+
+
+<!-- TOOLS -->
 
 <section class="tools-grid">
 
-<div class="tool-card">
-<h2>🗜️ Image Compressor</h2>
-<p>Reduce image file size while keeping good quality.</p>
-<button onclick="showTool('compressBox')">Open Tool</button>
-</div>
 
 <div class="tool-card">
-<h2>📐 Image Resizer</h2>
-<p>Resize your image to your required width and height.</p>
-<button onclick="showTool('resizeBox')">Open Tool</button>
+
+  <div class="tool-icon">🗜️</div>
+
+  <h2>Image Compressor</h2>
+
+  <p>
+    Reduce image file size while keeping good image quality.
+  </p>
+
+  <button onclick="showTool('compressBox')">
+    Open Tool
+  </button>
+
 </div>
 
-<div class="tool-card">
-<h2>✂️ Image Cropper</h2>
-<p>Crop your image easily.</p>
-<button onclick="showTool('cropBox')">Open Tool</button>
-</div>
 
 <div class="tool-card">
-<h2>🔄 Image Converter</h2>
-<p>Convert JPG, PNG and WebP images.</p>
-<button onclick="showTool('convertBox')">Open Tool</button>
+
+  <div class="tool-icon">📐</div>
+
+  <h2>Image Resizer</h2>
+
+  <p>
+    Resize images to your required width and height.
+  </p>
+
+  <button onclick="showTool('resizeBox')">
+    Open Tool
+  </button>
+
 </div>
 
-<div class="tool-card">
-<h2>📊 Image Information</h2>
-<p>Check image size, dimensions and file type.</p>
-<button onclick="showTool('infoBox')">Open Tool</button>
-</div>
 
 <div class="tool-card">
-<h2>📱 Social Media Resizer</h2>
-<p>Resize images for common social media sizes.</p>
-<button onclick="showTool('socialBox')">Open Tool</button>
+
+  <div class="tool-icon">✂️</div>
+
+  <h2>Image Cropper</h2>
+
+  <p>
+    Crop the center area of your image using custom dimensions.
+  </p>
+
+  <button onclick="showTool('cropBox')">
+    Open Tool
+  </button>
+
 </div>
+
+
+<div class="tool-card">
+
+  <div class="tool-icon">🔄</div>
+
+  <h2>Image Converter</h2>
+
+  <p>
+    Convert images between JPG, PNG and WebP formats.
+  </p>
+
+  <button onclick="showTool('convertBox')">
+    Open Tool
+  </button>
+
+</div>
+
+
+<div class="tool-card">
+
+  <div class="tool-icon">📊</div>
+
+  <h2>Image Information</h2>
+
+  <p>
+    Check image dimensions, file size, name and file type.
+  </p>
+
+  <button onclick="showTool('infoBox')">
+    Open Tool
+  </button>
+
+</div>
+
+
+<div class="tool-card">
+
+  <div class="tool-icon">📱</div>
+
+  <h2>Social Media Resizer</h2>
+
+  <p>
+    Resize images for Instagram, YouTube, Facebook and X.
+  </p>
+
+  <button onclick="showTool('socialBox')">
+    Open Tool
+  </button>
+
+</div>
+
+
+<div class="tool-card">
+
+  <div class="tool-icon">🖼️</div>
+
+  <h2>Background Remover</h2>
+
+  <p>
+    Remove a simple background color from an image and create a transparent PNG.
+  </p>
+
+  <button onclick="showTool('backgroundBox')">
+    Open Tool
+  </button>
+
+</div>
+
+
+<div class="tool-card">
+
+  <div class="tool-icon">🎨</div>
+
+  <h2>Image Color Picker</h2>
+
+  <p>
+    Click anywhere on an image to get its HEX and RGB color code.
+  </p>
+
+  <button onclick="showTool('colorBox')">
+    Open Tool
+  </button>
+
+</div>
+
 
 </section>
+
+
+<!-- COMPRESSOR -->
 
 <section id="compressBox" class="tool-box hidden">
 
 <h2>🗜️ Image Compressor</h2>
-<p>Choose an image and select the quality.</p>
+
+<p>
+Reduce your image file size online while maintaining good quality.
+</p>
 
 <input type="file" id="compressInput" accept="image/*">
 
@@ -283,104 +554,234 @@ Quality: <span id="qualityText">70%</span>
 
 <input type="range" id="quality" min="10" max="100" value="70">
 
-<button onclick="compressImage()">Compress Image</button>
+<button onclick="compressImage()">
+Compress Image
+</button>
 
 <div id="compressResult" class="result"></div>
 
 </section>
 
+
+<!-- RESIZER -->
+
 <section id="resizeBox" class="tool-box hidden">
 
 <h2>📐 Image Resizer</h2>
-<p>Enter the dimensions you want.</p>
+
+<p>
+Resize your image to an exact width and height in pixels.
+</p>
 
 <input type="file" id="resizeInput" accept="image/*">
 
 <label>Width (px)</label>
+
 <input type="number" id="resizeWidth" placeholder="Example: 1080">
 
 <label>Height (px)</label>
+
 <input type="number" id="resizeHeight" placeholder="Example: 1080">
 
-<button onclick="resizeImage()">Resize Image</button>
+<button onclick="resizeImage()">
+Resize Image
+</button>
 
 <div id="resizeResult" class="result"></div>
 
 </section>
 
+
+<!-- CROPPER -->
+
 <section id="cropBox" class="tool-box hidden">
 
 <h2>✂️ Image Cropper</h2>
-<p>Enter the crop area in pixels.</p>
+
+<p>
+Crop the center area of an image using your desired dimensions.
+</p>
 
 <input type="file" id="cropInput" accept="image/*">
 
 <label>Crop Width</label>
+
 <input type="number" id="cropWidth" placeholder="Example: 500">
 
 <label>Crop Height</label>
+
 <input type="number" id="cropHeight" placeholder="Example: 500">
 
-<button onclick="cropImage()">Crop Image</button>
+<button onclick="cropImage()">
+Crop Image
+</button>
 
 <div id="cropResult" class="result"></div>
 
 </section>
 
+
+<!-- CONVERTER -->
+
 <section id="convertBox" class="tool-box hidden">
 
 <h2>🔄 Image Converter</h2>
-<p>Convert your image to JPG, PNG or WebP.</p>
+
+<p>
+Convert JPG, PNG and WebP images online.
+</p>
 
 <input type="file" id="convertInput" accept="image/*">
 
 <label>Choose Format</label>
 
 <select id="format">
+
 <option value="image/jpeg">JPG</option>
+
 <option value="image/png">PNG</option>
+
 <option value="image/webp">WebP</option>
+
 </select>
 
-<button onclick="convertImage()">Convert Image</button>
+<button onclick="convertImage()">
+Convert Image
+</button>
 
 <div id="convertResult" class="result"></div>
 
 </section>
 
+
+<!-- IMAGE INFO -->
+
 <section id="infoBox" class="tool-box hidden">
 
 <h2>📊 Image Information</h2>
-<p>Check your image information.</p>
+
+<p>
+Check your image file size, dimensions and type.
+</p>
 
 <input type="file" id="infoInput" accept="image/*">
 
-<button onclick="getImageInfo()">Check Information</button>
+<button onclick="getImageInfo()">
+Check Information
+</button>
 
 <div id="infoResult" class="result"></div>
 
 </section>
 
+
+<!-- SOCIAL MEDIA -->
+
 <section id="socialBox" class="tool-box hidden">
 
 <h2>📱 Social Media Resizer</h2>
-<p>Choose a platform size and resize your image.</p>
+
+<p>
+Resize your image for popular social media platforms.
+</p>
 
 <input type="file" id="socialInput" accept="image/*">
 
 <select id="socialSize">
-<option value="1080,1080">Instagram Post — 1080 × 1080</option>
-<option value="1080,1920">Instagram Story — 1080 × 1920</option>
-<option value="1280,720">YouTube Thumbnail — 1280 × 720</option>
-<option value="1200,630">Facebook Post — 1200 × 630</option>
-<option value="1500,500">Twitter/X Header — 1500 × 500</option>
+
+<option value="1080,1080">
+Instagram Post — 1080 × 1080
+</option>
+
+<option value="1080,1920">
+Instagram Story — 1080 × 1920
+</option>
+
+<option value="1280,720">
+YouTube Thumbnail — 1280 × 720
+</option>
+
+<option value="1200,630">
+Facebook Post — 1200 × 630
+</option>
+
+<option value="1500,500">
+Twitter/X Header — 1500 × 500
+</option>
+
 </select>
 
-<button onclick="socialResize()">Resize Image</button>
+<button onclick="socialResize()">
+Resize Image
+</button>
 
 <div id="socialResult" class="result"></div>
 
 </section>
+
+
+<!-- BACKGROUND REMOVER -->
+
+<section id="backgroundBox" class="tool-box hidden">
+
+<h2>🖼️ Background Remover</h2>
+
+<p>
+This free browser-based tool removes a simple background color
+from the edges of your image and creates a transparent PNG.
+</p>
+
+<input type="file" id="backgroundInput" accept="image/*">
+
+<label>
+Color tolerance
+</label>
+
+<input type="range" id="tolerance" min="5" max="100" value="35">
+
+<p>
+Tolerance: <span id="toleranceText">35</span>
+</p>
+
+<button onclick="removeBackground()">
+Remove Background
+</button>
+
+<div id="backgroundResult" class="result"></div>
+
+</section>
+
+
+<!-- COLOR PICKER -->
+
+<section id="colorBox" class="tool-box hidden">
+
+<h2>🎨 Image Color Picker</h2>
+
+<p>
+Upload an image and click on any point to get its HEX and RGB color.
+</p>
+
+<input type="file" id="colorInput" accept="image/*">
+
+<div class="color-area">
+
+<canvas id="colorCanvas"></canvas>
+
+<div id="colorResult" class="color-result">
+
+<p>
+Upload an image, then click on it to select a color.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ABOUT -->
 
 <section class="about">
 
@@ -392,36 +793,128 @@ common image tasks simple and accessible.
 </p>
 
 <p>
-You can compress, resize, crop, convert and check your images
-without complicated software.
+You can compress, resize, crop, convert, inspect and resize
+images for social media without complicated software.
 </p>
 
 <p>
-Where possible, image processing happens directly in your browser.
+Most image processing on this website happens directly in your browser.
+This helps keep your selected images on your device instead of
+requiring them to be uploaded to a server.
 </p>
 
 <h3>🔒 Privacy</h3>
 
 <p>
-Your selected images are processed locally in your browser for
-the tools on this page.
+PixelKit Tools is designed with privacy in mind. Where possible,
+image processing happens locally in your browser.
 </p>
 
 </section>
 
+
+<!-- FAQ -->
+
+<section class="faq">
+
+<h2>Frequently Asked Questions</h2>
+
+
+<div class="faq-item">
+
+<h3>Is PixelKit Tools free?</h3>
+
+<p>
+Yes. PixelKit Tools is designed to provide free online image tools.
+</p>
+
+</div>
+
+
+<div class="faq-item">
+
+<h3>Do I need to install software?</h3>
+
+<p>
+No. You can use the tools directly from a modern web browser.
+</p>
+
+</div>
+
+
+<div class="faq-item">
+
+<h3>Can I compress images online?</h3>
+
+<p>
+Yes. The Image Compressor lets you select an image and choose
+a compression quality before downloading the result.
+</p>
+
+</div>
+
+
+<div class="faq-item">
+
+<h3>Can I convert JPG to PNG?</h3>
+
+<p>
+Yes. The Image Converter supports JPG, PNG and WebP formats.
+</p>
+
+</div>
+
+
+<div class="faq-item">
+
+<h3>Can I resize images for social media?</h3>
+
+<p>
+Yes. The Social Media Resizer includes common Instagram,
+YouTube, Facebook and X image sizes.
+</p>
+
+</div>
+
+
+<div class="faq-item">
+
+<h3>Are my images uploaded to a server?</h3>
+
+<p>
+The image-processing functions on this page are designed to
+process images directly in your browser.
+</p>
+
+</div>
+
+
+</section>
+
+
 </main>
+
 
 <footer>
 
-<p>© 2026 PixelKit Tools. All Rights Reserved.</p>
+<p>
+<strong>PixelKit Tools</strong> — Free Online Image Tools
+</p>
 
 <p>
-Free Image Compressor • Image Resizer • Image Converter
+Image Compressor • Image Resizer • Image Cropper • Image Converter
+</p>
+
+<p>
+© 2026 PixelKit Tools. All Rights Reserved.
 </p>
 
 </footer>
 
+
 <script>
+
+/* SHOW TOOL */
 
 function showTool(id){
 
@@ -431,12 +924,18 @@ function showTool(id){
     box.classList.add("hidden");
   });
 
-  document.getElementById(id).classList.remove("hidden");
+  const selected = document.getElementById(id);
 
-  document.getElementById(id).scrollIntoView({
+  selected.classList.remove("hidden");
+
+  selected.scrollIntoView({
     behavior:"smooth"
   });
+
 }
+
+
+/* QUALITY SLIDER */
 
 const qualitySlider = document.getElementById("quality");
 
@@ -447,13 +946,19 @@ qualitySlider.addEventListener("input",function(){
 
 });
 
+
+/* COMPRESS */
+
 function compressImage(){
 
   const input = document.getElementById("compressInput");
   const result = document.getElementById("compressResult");
 
   if(!input.files.length){
-    result.innerHTML = "<p>Please select an image first.</p>";
+
+    result.innerHTML =
+    "<p>Please select an image first.</p>";
+
     return;
   }
 
@@ -477,10 +982,21 @@ function compressImage(){
 
       canvas.toBlob(function(blob){
 
+        if(!blob){
+
+          result.innerHTML =
+          "<p>Compression failed. Please try another image.</p>";
+
+          return;
+        }
+
         const url = URL.createObjectURL(blob);
 
-        const oldSize = (file.size / 1024).toFixed(1);
-        const newSize = (blob.size / 1024).toFixed(1);
+        const oldSize =
+        (file.size / 1024).toFixed(1);
+
+        const newSize =
+        (blob.size / 1024).toFixed(1);
 
         result.innerHTML =
         "<p><b>Original:</b> " + oldSize + " KB</p>" +
@@ -499,12 +1015,19 @@ function compressImage(){
   };
 
   reader.readAsDataURL(file);
+
 }
+
+
+/* RESIZE */
 
 function resizeImage(){
 
-  const input = document.getElementById("resizeInput");
-  const result = document.getElementById("resizeResult");
+  const input =
+  document.getElementById("resizeInput");
+
+  const result =
+  document.getElementById("resizeResult");
 
   const width =
   parseInt(document.getElementById("resizeWidth").value);
@@ -513,12 +1036,18 @@ function resizeImage(){
   parseInt(document.getElementById("resizeHeight").value);
 
   if(!input.files.length){
-    result.innerHTML = "<p>Please select an image first.</p>";
+
+    result.innerHTML =
+    "<p>Please select an image first.</p>";
+
     return;
   }
 
   if(!width || !height || width < 1 || height < 1){
-    result.innerHTML = "<p>Please enter valid width and height.</p>";
+
+    result.innerHTML =
+    "<p>Please enter valid width and height.</p>";
+
     return;
   }
 
@@ -530,23 +1059,38 @@ function resizeImage(){
 
     img.onload = function(){
 
-      const canvas = document.createElement("canvas");
+      const canvas =
+      document.createElement("canvas");
 
       canvas.width = width;
       canvas.height = height;
 
-      const ctx = canvas.getContext("2d");
+      const ctx =
+      canvas.getContext("2d");
 
-      ctx.drawImage(img,0,0,width,height);
+      ctx.drawImage(
+        img,
+        0,
+        0,
+        width,
+        height
+      );
 
       canvas.toBlob(function(blob){
 
-        const url = URL.createObjectURL(blob);
+        const url =
+        URL.createObjectURL(blob);
 
         result.innerHTML =
-        "<p>New size: " + width + " × " + height + " px</p>" +
-        "<img class='preview' src='" + url + "'>" +
-        "<a class='download' href='" + url +
+        "<p>New size: " +
+        width + " × " + height +
+        " px</p>" +
+
+        "<img class='preview' src='" +
+        url + "'>" +
+
+        "<a class='download' href='" +
+        url +
         "' download='pixelkit-resized.jpg'>" +
         "⬇️ Download Image</a>";
 
@@ -559,12 +1103,19 @@ function resizeImage(){
   };
 
   reader.readAsDataURL(input.files[0]);
+
 }
+
+
+/* CROP */
 
 function cropImage(){
 
-  const input = document.getElementById("cropInput");
-  const result = document.getElementById("cropResult");
+  const input =
+  document.getElementById("cropInput");
+
+  const result =
+  document.getElementById("cropResult");
 
   const width =
   parseInt(document.getElementById("cropWidth").value);
@@ -573,12 +1124,18 @@ function cropImage(){
   parseInt(document.getElementById("cropHeight").value);
 
   if(!input.files.length){
-    result.innerHTML = "<p>Please select an image first.</p>";
+
+    result.innerHTML =
+    "<p>Please select an image first.</p>";
+
     return;
   }
 
-  if(!width || !height){
-    result.innerHTML = "<p>Please enter crop width and height.</p>";
+  if(!width || !height || width < 1 || height < 1){
+
+    result.innerHTML =
+    "<p>Please enter valid crop dimensions.</p>";
+
     return;
   }
 
@@ -590,18 +1147,26 @@ function cropImage(){
 
     img.onload = function(){
 
-      const cropW = Math.min(width,img.width);
-      const cropH = Math.min(height,img.height);
+      const cropW =
+      Math.min(width,img.width);
 
-      const canvas = document.createElement("canvas");
+      const cropH =
+      Math.min(height,img.height);
+
+      const canvas =
+      document.createElement("canvas");
 
       canvas.width = cropW;
       canvas.height = cropH;
 
-      const ctx = canvas.getContext("2d");
+      const ctx =
+      canvas.getContext("2d");
 
-      const x = (img.width - cropW) / 2;
-      const y = (img.height - cropH) / 2;
+      const x =
+      (img.width - cropW) / 2;
+
+      const y =
+      (img.height - cropH) / 2;
 
       ctx.drawImage(
         img,
@@ -617,12 +1182,19 @@ function cropImage(){
 
       canvas.toBlob(function(blob){
 
-        const url = URL.createObjectURL(blob);
+        const url =
+        URL.createObjectURL(blob);
 
         result.innerHTML =
-        "<p>Cropped image: " + cropW + " × " + cropH + " px</p>" +
-        "<img class='preview' src='" + url + "'>" +
-        "<a class='download' href='" + url +
+        "<p>Cropped image: " +
+        cropW + " × " +
+        cropH + " px</p>" +
+
+        "<img class='preview' src='" +
+        url + "'>" +
+
+        "<a class='download' href='" +
+        url +
         "' download='pixelkit-cropped.jpg'>" +
         "⬇️ Download Image</a>";
 
@@ -635,16 +1207,28 @@ function cropImage(){
   };
 
   reader.readAsDataURL(input.files[0]);
+
 }
+
+
+/* CONVERTER */
 
 function convertImage(){
 
-  const input = document.getElementById("convertInput");
-  const format = document.getElementById("format").value;
-  const result = document.getElementById("convertResult");
+  const input =
+  document.getElementById("convertInput");
+
+  const format =
+  document.getElementById("format").value;
+
+  const result =
+  document.getElementById("convertResult");
 
   if(!input.files.length){
-    result.innerHTML = "<p>Please select an image first.</p>";
+
+    result.innerHTML =
+    "<p>Please select an image first.</p>";
+
     return;
   }
 
@@ -656,144 +1240,36 @@ function convertImage(){
 
     img.onload = function(){
 
-      const canvas = document.createElement("canvas");
+      const canvas =
+      document.createElement("canvas");
 
       canvas.width = img.width;
       canvas.height = img.height;
 
-      const ctx = canvas.getContext("2d");
+      const ctx =
+      canvas.getContext("2d");
 
       ctx.drawImage(img,0,0);
 
       canvas.toBlob(function(blob){
 
-        const url = URL.createObjectURL(blob);
+        if(!blob){
+
+          result.innerHTML =
+          "<p>Conversion failed.</p>";
+
+          return;
+        }
+
+        const url =
+        URL.createObjectURL(blob);
 
         let extension = "jpg";
 
-        if(format === "image/png") extension = "png";
-        if(format === "image/webp") extension = "webp";
+        if(format === "image/png")
+          extension = "png";
 
-        result.innerHTML =
-        "<img class='preview' src='" + url + "'>" +
-        "<a class='download' href='" + url +
-        "' download='pixelkit-image." + extension + "'>" +
-        "⬇️ Download " + extension.toUpperCase() +
-        "</a>";
+        if(format === "image/webp")
+          extension = "webp";
 
-      },format,0.90);
-
-    };
-
-    img.src = e.target.result;
-
-  };
-
-  reader.readAsDataURL(input.files[0]);
-}
-
-function getImageInfo(){
-
-  const input = document.getElementById("infoInput");
-  const result = document.getElementById("infoResult");
-
-  if(!input.files.length){
-    result.innerHTML = "<p>Please select an image first.</p>";
-    return;
-  }
-
-  const file = input.files[0];
-  const reader = new FileReader();
-
-  reader.onload = function(e){
-
-    const img = new Image();
-
-    img.onload = function(){
-
-      const sizeKB = (file.size / 1024).toFixed(2);
-
-      result.innerHTML =
-      "<div class='info'>" +
-      "<p><b>File name:</b> " + file.name + "</p>" +
-      "<p><b>File type:</b> " + file.type + "</p>" +
-      "<p><b>File size:</b> " + sizeKB + " KB</p>" +
-      "<p><b>Width:</b> " + img.width + " px</p>" +
-      "<p><b>Height:</b> " + img.height + " px</p>" +
-      "<img class='preview' src='" + e.target.result + "'>" +
-      "</div>";
-
-    };
-
-    img.src = e.target.result;
-
-  };
-
-  reader.readAsDataURL(file);
-}
-
-function socialResize(){
-
-  const input = document.getElementById("socialInput");
-  const result = document.getElementById("socialResult");
-
-  const values =
-  document.getElementById("socialSize").value.split(",");
-
-  const width = parseInt(values[0]);
-  const height = parseInt(values[1]);
-
-  if(!input.files.length){
-    result.innerHTML = "<p>Please select an image first.</p>";
-    return;
-  }
-
-  const reader = new FileReader();
-
-  reader.onload = function(e){
-
-    const img = new Image();
-
-    img.onload = function(){
-
-      const canvas = document.createElement("canvas");
-
-      canvas.width = width;
-      canvas.height = height;
-
-      const ctx = canvas.getContext("2d");
-
-      ctx.drawImage(
-        img,
-        0,
-        0,
-        width,
-        height
-      );
-
-      canvas.toBlob(function(blob){
-
-        const url = URL.createObjectURL(blob);
-
-        result.innerHTML =
-        "<p>New dimensions: " + width + " × " + height + " px</p>" +
-        "<img class='preview' src='" + url + "'>" +
-        "<a class='download' href='" + url +
-        "' download='pixelkit-social-image.jpg'>" +
-        "⬇️ Download Image</a>";
-
-      },"image/jpeg",0.90);
-
-    };
-
-    img.src = e.target.result;
-
-  };
-
-  reader.readAsDataURL(input.files[0]);
-}
-
-</script>
-
-</body>
-  </html>
+        result.innerHTML
