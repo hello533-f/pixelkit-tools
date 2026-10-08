@@ -3,39 +3,529 @@
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>PixelKit Tools - Free Image Compressor, Resizer, Converter & More</title>
 
-<meta name="google-site-verification" content="r9wi5lSCehY19MbiDT2Uy47NDob3hTKrzY2qcbuhWv0">
-
 <meta name="description" content="PixelKit Tools offers free online image compression, resizing, cropping, JPG PNG WebP conversion, image information, social media resizing, background removal and color picking tools.">
 
-<meta name="keywords" content="free image tools, image compressor, image resizer, image converter, JPG to PNG, PNG to JPG, WebP converter, image cropper, image color picker, background remover, social media image resizer, free photo tools">
+<meta name="keywords" content="free image tools, image compressor, image resizer, image converter, JPG to PNG, PNG to JPG, WebP converter, image cropper, image color picker, background remover, social media image resizer">
 
 <meta name="robots" content="index, follow">
 
-<meta name="author" content="PixelKit Tools">
+<meta name="google-site-verification" content="r9wi5lSCehY19MbiDT2Uy47NDob3hTKrzY2qcbuhWv0">
 
 <link rel="canonical" href="https://hello533-f.github.io/pixelkit-tools/">
 
 <meta property="og:title" content="PixelKit Tools - Free Online Image Tools">
-
 <meta property="og:description" content="Compress, resize, crop, convert and edit images online for free with PixelKit Tools.">
-
 <meta property="og:type" content="website">
-
 <meta property="og:url" content="https://hello533-f.github.io/pixelkit-tools/">
 
-<meta property="og:site_name" content="PixelKit Tools">
-
 <meta name="twitter:card" content="summary">
-
 <meta name="twitter:title" content="PixelKit Tools - Free Online Image Tools">
+<meta name="twitter:description" content="Free online image compressor, resizer, converter, cropper and more.">
 
-<meta name="twitter:description" content="Free online tools for compressing, resizing, cropping and converting images.">
+<style>
 
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#080808;
+    color:#fff;
+    line-height:1.6;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+.container{
+    width:92%;
+    max-width:1150px;
+    margin:auto;
+}
+
+/* HEADER */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:999;
+    background:rgba(8,8,8,.96);
+    border-bottom:1px solid #252525;
+    backdrop-filter:blur(10px);
+}
+
+.nav{
+    min-height:70px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+}
+
+.logo{
+    font-size:25px;
+    font-weight:900;
+    letter-spacing:1px;
+}
+
+.logo span{
+    color:#ffd400;
+}
+
+nav{
+    display:flex;
+    gap:20px;
+}
+
+nav a{
+    color:#ddd;
+    font-size:14px;
+    font-weight:700;
+}
+
+nav a:hover{
+    color:#ffd400;
+}
+
+/* HERO */
+
+.hero{
+    padding:80px 0 55px;
+    text-align:center;
+    background:
+    radial-gradient(circle at 50% 0%,rgba(255,212,0,.14),transparent 35%);
+}
+
+.badge{
+    display:inline-block;
+    padding:7px 14px;
+    border:1px solid #3b3b3b;
+    border-radius:30px;
+    color:#ffd400;
+    font-size:13px;
+    margin-bottom:18px;
+    background:#111;
+}
+
+.hero h1{
+    font-size:clamp(38px,7vw,70px);
+    line-height:1.05;
+    margin-bottom:20px;
+    font-weight:900;
+}
+
+.hero h1 span{
+    color:#ffd400;
+}
+
+.hero p{
+    max-width:720px;
+    margin:auto;
+    color:#bdbdbd;
+    font-size:17px;
+}
+
+.hero-buttons{
+    margin-top:30px;
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.primary-btn,
+.secondary-btn{
+    border:none;
+    border-radius:10px;
+    padding:13px 22px;
+    font-weight:800;
+    cursor:pointer;
+    font-size:14px;
+}
+
+.primary-btn{
+    background:#ffd400;
+    color:#000;
+}
+
+.primary-btn:hover{
+    background:#fff;
+}
+
+.secondary-btn{
+    background:#161616;
+    color:#fff;
+    border:1px solid #333;
+}
+
+.secondary-btn:hover{
+    border-color:#ffd400;
+    color:#ffd400;
+}
+
+/* TOOLS */
+
+.tools-section{
+    padding:55px 0;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.section-title h2{
+    font-size:36px;
+    margin-bottom:8px;
+}
+
+.section-title p{
+    color:#999;
+}
+
+.tools-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+}
+
+.tool-card{
+    background:linear-gradient(145deg,#151515,#0d0d0d);
+    border:1px solid #292929;
+    border-radius:18px;
+    padding:25px 20px;
+    min-height:230px;
+    display:flex;
+    flex-direction:column;
+    transition:.25s ease;
+}
+
+.tool-card:hover{
+    transform:translateY(-6px);
+    border-color:#ffd400;
+    box-shadow:0 12px 35px rgba(0,0,0,.35);
+}
+
+.tool-icon{
+    width:52px;
+    height:52px;
+    border-radius:14px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#ffd400;
+    color:#000;
+    font-size:25px;
+    margin-bottom:18px;
+}
+
+.tool-card h3{
+    font-size:19px;
+    margin-bottom:8px;
+}
+
+.tool-card p{
+    color:#999;
+    font-size:13px;
+    flex:1;
+}
+
+.open-btn{
+    width:100%;
+    border:1px solid #333;
+    background:#111;
+    color:#fff;
+    padding:11px;
+    border-radius:9px;
+    cursor:pointer;
+    font-weight:700;
+    margin-top:18px;
+}
+
+.open-btn:hover{
+    background:#ffd400;
+    color:#000;
+    border-color:#ffd400;
+}
+
+/* TOOL BOX */
+
+.tool-area{
+    padding:20px 0 60px;
+}
+
+.tool-box{
+    display:none;
+    background:#111;
+    border:1px solid #292929;
+    border-radius:18px;
+    padding:30px;
+    margin-bottom:25px;
+}
+
+.tool-box.active{
+    display:block;
+    animation:fadeIn .25s ease;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(8px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.tool-box h2{
+    margin-bottom:8px;
+    color:#ffd400;
+}
+
+.tool-box>p{
+    color:#999;
+    margin-bottom:22px;
+}
+
+input[type="file"]{
+    width:100%;
+    padding:13px;
+    background:#0b0b0b;
+    border:1px solid #333;
+    border-radius:9px;
+    color:#ddd;
+    margin-bottom:16px;
+}
+
+input[type="number"],
+input[type="text"],
+select{
+    width:100%;
+    padding:12px;
+    background:#0b0b0b;
+    border:1px solid #333;
+    color:#fff;
+    border-radius:8px;
+    outline:none;
+}
+
+input[type="number"]:focus,
+input[type="text"]:focus,
+select:focus{
+    border-color:#ffd400;
+}
+
+input[type="range"]{
+    width:100%;
+    margin:12px 0;
+    accent-color:#ffd400;
+}
+
+label{
+    display:block;
+    margin-bottom:7px;
+    color:#ddd;
+    font-size:14px;
+    font-weight:700;
+}
+
+.field{
+    margin-bottom:18px;
+}
+
+.two-columns{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+.action-btn{
+    background:#ffd400;
+    color:#000;
+    border:none;
+    padding:12px 20px;
+    border-radius:9px;
+    cursor:pointer;
+    font-weight:900;
+    margin-top:5px;
+}
+
+.action-btn:hover{
+    background:#fff;
+}
+
+.result{
+    margin-top:20px;
+    color:#ddd;
+}
+
+.result img{
+    max-width:100%;
+    max-height:500px;
+    display:block;
+    margin:18px auto;
+    border:1px solid #333;
+    border-radius:10px;
+}
+
+.download-btn{
+    display:inline-block;
+    background:#ffd400;
+    color:#000;
+    padding:11px 18px;
+    border-radius:8px;
+    font-weight:800;
+    margin-top:10px;
+}
+
+.download-btn:hover{
+    background:#fff;
+}
+
+.close-btn{
+    float:right;
+    background:#222;
+    color:#fff;
+    border:1px solid #333;
+    padding:7px 12px;
+    border-radius:7px;
+    cursor:pointer;
+}
+
+.close-btn:hover{
+    color:#ffd400;
+    border-color:#ffd400;
+}
+
+.info-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+}
+
+.info-item{
+    background:#0b0b0b;
+    border:1px solid #242424;
+    padding:13px;
+    border-radius:8px;
+}
+
+.color-result{
+    text-align:center;
+    margin-top:18px;
+}
+
+.color-preview{
+    width:80px;
+    height:80px;
+    border-radius:12px;
+    border:2px solid #fff;
+    margin:10px auto;
+}
+
+/* INFO */
+
+.info-section{
+    padding:60px 0;
+    background:#0d0d0d;
+}
+
+.info-content{
+    max-width:850px;
+    margin:auto;
+}
+
+.info-content h2{
+    color:#ffd400;
+    margin:28px 0 10px;
+}
+
+.info-content p{
+    color:#aaa;
+    margin-bottom:15px;
+}
+
+/* FOOTER */
+
+footer{
+    border-top:1px solid #242424;
+    padding:30px 0;
+    text-align:center;
+    color:#777;
+    font-size:13px;
+}
+
+footer strong{
+    color:#ffd400;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+    .tools-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:600px){
+
+    .nav{
+        min-height:60px;
+    }
+
+    nav{
+        gap:10px;
+    }
+
+    nav a{
+        font-size:12px;
+    }
+
+    .hero{
+        padding:60px 0 40px;
+    }
+
+    .hero p{
+        font-size:15px;
+    }
+
+    .tools-grid{
+        grid-template-columns:1fr;
+    }
+
+    .tool-box{
+        padding:20px;
+    }
+
+    .two-columns,
+    .info-grid{
+        grid-template-columns:1fr;
+    }
+
+    .section-title h2{
+        font-size:29px;
+    }
+
+}
+
+</style>
 
 <!-- STRUCTURED DATA -->
 
@@ -46,8 +536,7 @@
     {
       "@type":"WebSite",
       "name":"PixelKit Tools",
-      "url":"https://hello533-f.github.io/pixelkit-tools/",
-      "description":"Free online image tools for compression, resizing, cropping, conversion and more."
+      "url":"https://hello533-f.github.io/pixelkit-tools/"
     },
     {
       "@type":"WebApplication",
@@ -55,13 +544,11 @@
       "url":"https://hello533-f.github.io/pixelkit-tools/",
       "applicationCategory":"MultimediaApplication",
       "operatingSystem":"Any",
-      "browserRequirements":"Requires a modern web browser",
       "offers":{
         "@type":"Offer",
         "price":"0",
         "priceCurrency":"USD"
-      },
-      "description":"Free browser-based image tools including image compressor, resizer, cropper, converter, color picker and background remover."
+      }
     },
     {
       "@type":"FAQPage",
@@ -71,31 +558,7 @@
           "name":"Is PixelKit Tools free?",
           "acceptedAnswer":{
             "@type":"Answer",
-            "text":"Yes. PixelKit Tools provides free online image tools."
-          }
-        },
-        {
-          "@type":"Question",
-          "name":"Can I compress images online?",
-          "acceptedAnswer":{
-            "@type":"Answer",
-            "text":"Yes. PixelKit Tools includes a browser-based image compressor."
-          }
-        },
-        {
-          "@type":"Question",
-          "name":"Can I convert JPG to PNG?",
-          "acceptedAnswer":{
-            "@type":"Answer",
-            "text":"Yes. The Image Converter supports JPG, PNG and WebP formats."
-          }
-        },
-        {
-          "@type":"Question",
-          "name":"Can I resize images for social media?",
-          "acceptedAnswer":{
-            "@type":"Answer",
-            "text":"Yes. PixelKit Tools includes common Instagram, YouTube, Facebook and X image dimensions."
+            "text":"Yes. PixelKit Tools provides free browser-based image tools."
           }
         },
         {
@@ -103,7 +566,15 @@
           "name":"Are my images uploaded to a server?",
           "acceptedAnswer":{
             "@type":"Answer",
-            "text":"The image-processing tools are designed to process images directly in your browser."
+            "text":"The image processing tools are designed to process images directly in your browser."
+          }
+        },
+        {
+          "@type":"Question",
+          "name":"What image formats are supported?",
+          "acceptedAnswer":{
+            "@type":"Answer",
+            "text":"PixelKit Tools supports common image formats including JPG, PNG and WebP."
           }
         }
       ]
@@ -112,483 +583,67 @@
 }
 </script>
 
-
-<style>
-
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
-body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:#f5f7fa;
-  color:#171717;
-  line-height:1.6;
-}
-
-
-/* HEADER */
-
-header{
-  background:
-    radial-gradient(circle at 20% 20%,rgba(255,202,40,.12),transparent 25%),
-    linear-gradient(135deg,#090909,#171717);
-  color:#fff;
-  padding:22px 15px;
-  text-align:center;
-  border-bottom:2px solid #f5c542;
-  position:relative;
-}
-
-.logo{
-  font-size:34px;
-  font-weight:900;
-  letter-spacing:-1px;
-}
-
-.logo span{
-  color:#f5c542;
-}
-
-header p{
-  color:#bdbdbd;
-  margin-top:3px;
-  font-size:14px;
-}
-
-
-/* MAIN */
-
-.container{
-  max-width:1180px;
-  margin:auto;
-  padding:0 18px;
-}
-
-
-/* HERO */
-
-.hero{
-  text-align:center;
-  padding:65px 15px 45px;
-}
-
-.badge{
-  display:inline-block;
-  background:#fff4c7;
-  color:#765800;
-  padding:7px 14px;
-  border-radius:50px;
-  font-size:13px;
-  font-weight:bold;
-  margin-bottom:18px;
-}
-
-.hero h1{
-  font-size:48px;
-  line-height:1.12;
-  max-width:850px;
-  margin:auto;
-  letter-spacing:-1.5px;
-}
-
-.hero h1 span{
-  color:#d29f00;
-}
-
-.hero p{
-  max-width:750px;
-  margin:18px auto 0;
-  color:#606060;
-  font-size:17px;
-}
-
-
-/* SECTION TITLE */
-
-.section-title{
-  text-align:center;
-  margin:10px 0 25px;
-}
-
-.section-title h2{
-  font-size:30px;
-}
-
-.section-title p{
-  color:#707070;
-  margin-top:5px;
-}
-
-
-/* TOOLS */
-
-.tools-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(245px,1fr));
-  gap:20px;
-  margin-bottom:35px;
-}
-
-.tool-card{
-  background:#fff;
-  padding:27px;
-  border-radius:20px;
-  border:1px solid #e8e8e8;
-  box-shadow:0 7px 25px rgba(0,0,0,.06);
-  transition:.25s ease;
-  position:relative;
-  overflow:hidden;
-}
-
-.tool-card:before{
-  content:"";
-  position:absolute;
-  left:0;
-  top:0;
-  width:100%;
-  height:4px;
-  background:#f5c542;
-  transform:scaleX(0);
-  transform-origin:left;
-  transition:.25s;
-}
-
-.tool-card:hover{
-  transform:translateY(-6px);
-  box-shadow:0 14px 35px rgba(0,0,0,.12);
-}
-
-.tool-card:hover:before{
-  transform:scaleX(1);
-}
-
-.tool-icon{
-  width:58px;
-  height:58px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:#fff7d7;
-  border-radius:16px;
-  font-size:29px;
-  margin-bottom:15px;
-}
-
-.tool-card h3{
-  font-size:20px;
-  margin-bottom:8px;
-}
-
-.tool-card p{
-  color:#686868;
-  font-size:14px;
-  min-height:67px;
-}
-
-
-/* BUTTON */
-
-button,
-.download{
-  display:inline-block;
-  border:0;
-  background:#151515;
-  color:#fff;
-  padding:12px 19px;
-  border-radius:10px;
-  cursor:pointer;
-  text-decoration:none;
-  margin:6px 2px;
-  font-weight:bold;
-  transition:.2s;
-}
-
-button:hover,
-.download:hover{
-  background:#f5c542;
-  color:#111;
-  transform:translateY(-1px);
-}
-
-
-/* TOOL BOX */
-
-.tool-box{
-  background:#fff;
-  margin:28px 0;
-  padding:30px;
-  border-radius:20px;
-  border:1px solid #e6e6e6;
-  box-shadow:0 7px 25px rgba(0,0,0,.06);
-}
-
-.tool-box h2{
-  font-size:27px;
-  margin-bottom:5px;
-}
-
-.tool-box > p{
-  color:#666;
-  margin-bottom:20px;
-}
-
-
-/* INPUTS */
-
-input[type=file],
-input[type=number],
-input[type=text],
-select{
-  width:100%;
-  padding:13px;
-  margin:8px 0 15px;
-  border:1px solid #dcdcdc;
-  border-radius:10px;
-  background:#fff;
-  font-size:15px;
-}
-
-input[type=file]{
-  background:#fafafa;
-}
-
-input[type=range]{
-  width:100%;
-  margin:10px 0 15px;
-}
-
-label{
-  font-weight:bold;
-}
-
-
-/* RESULT */
-
-.result{
-  margin-top:22px;
-  text-align:center;
-}
-
-.preview{
-  max-width:100%;
-  max-height:420px;
-  margin:18px auto;
-  display:block;
-  border-radius:12px;
-  border:1px solid #ddd;
-}
-
-.info{
-  background:#f8f8f8;
-  padding:18px;
-  border-radius:12px;
-  margin-top:15px;
-  text-align:left;
-}
-
-
-/* COLOR PICKER */
-
-.color-area{
-  text-align:center;
-}
-
-#colorCanvas{
-  max-width:100%;
-  border:2px solid #ddd;
-  border-radius:12px;
-  cursor:crosshair;
-  margin:15px auto;
-  display:block;
-}
-
-.color-result{
-  background:#f8f8f8;
-  padding:20px;
-  border-radius:14px;
-  margin-top:15px;
-}
-
-.color-preview{
-  width:75px;
-  height:75px;
-  border-radius:12px;
-  margin:10px auto;
-  border:2px solid #ddd;
-}
-
-
-/* ABOUT */
-
-.about,
-.faq{
-  background:#fff;
-  margin-top:30px;
-  padding:32px;
-  border-radius:20px;
-  border:1px solid #e7e7e7;
-  box-shadow:0 5px 20px rgba(0,0,0,.04);
-}
-
-.about h2,
-.faq h2{
-  margin-bottom:15px;
-  font-size:27px;
-}
-
-.about h3{
-  margin:22px 0 8px;
-}
-
-.about p{
-  color:#555;
-  margin-bottom:13px;
-}
-
-
-/* FAQ */
-
-.faq-item{
-  padding:17px 0;
-  border-bottom:1px solid #eee;
-}
-
-.faq-item:last-child{
-  border-bottom:0;
-}
-
-.faq-item h3{
-  font-size:17px;
-  margin-bottom:5px;
-}
-
-.faq-item p{
-  color:#666;
-}
-
-
-/* FOOTER */
-
-footer{
-  background:#0c0c0c;
-  color:#aaa;
-  text-align:center;
-  padding:35px 15px;
-  margin-top:40px;
-}
-
-footer strong{
-  color:#f5c542;
-}
-
-footer p{
-  margin:5px 0;
-}
-
-
-/* HIDDEN */
-
-.hidden{
-  display:none !important;
-}
-
-
-/* MOBILE */
-
-@media(max-width:600px){
-
-  .hero{
-    padding:42px 8px 35px;
-  }
-
-  .hero h1{
-    font-size:32px;
-  }
-
-  .hero p{
-    font-size:15px;
-  }
-
-  .logo{
-    font-size:28px;
-  }
-
-  .tool-box{
-    padding:21px;
-  }
-
-  .tool-box h2{
-    font-size:23px;
-  }
-
-  .tool-card{
-    padding:22px;
-  }
-
-  button,
-  .download{
-    width:100%;
-    text-align:center;
-    margin:5px 0;
-  }
-
-}
-
-</style>
-
 </head>
-
 
 <body>
 
-
 <header>
+<div class="container nav">
 
-  <div class="logo">
-    Pixel<span>Kit</span> Tools
-  </div>
+<div class="logo">PixelKit <span>Tools</span></div>
 
-  <p>Free • Fast • Privacy-Friendly Image Tools</p>
+<nav>
+<a href="#home">Home</a>
+<a href="#tools">Tools</a>
+<a href="#about">About</a>
+</nav>
 
+</div>
 </header>
 
+<main>
 
-<main class="container">
+<section class="hero" id="home">
 
+<div class="container">
 
-<section class="hero">
+<div class="badge">100% Free • Browser Based • No Sign Up</div>
 
-  <div class="badge">
-    ⚡ 100% Free Online Image Toolkit
-  </div>
+<h1>Powerful <span>Image Tools</span><br>Made Simple</h1>
 
-  <h1>
-    Powerful <span>Image Tools</span><br>
-    Made Simple
-  </h1>
+<p>
+Compress, resize, crop, convert and analyze your images online.
+PixelKit Tools provides simple and free image utilities directly in your browser.
+</p>
 
-  <p>
-    Compress, resize, crop, convert, analyze and edit your images
-    directly in your browser. No complicated software required.
-  </p>
+<div class="hero-buttons">
+
+<a href="#tools" class="primary-btn">
+Explore Tools
+</a>
+
+<a href="#about" class="secondary-btn">
+Learn More
+</a>
+
+</div>
+
+</div>
 
 </section>
 
 
-<section>
+<section class="tools-section" id="tools">
+
+<div class="container">
 
 <div class="section-title">
 
-  <h2>All Image Tools</h2>
+<h2>Free Image Tools</h2>
 
-  <p>Choose a tool and start working with your image.</p>
+<p>
+Choose a tool and start working with your image instantly.
+</p>
 
 </div>
 
@@ -596,632 +651,590 @@ footer p{
 <div class="tools-grid">
 
 
+<!-- 1 -->
+
 <div class="tool-card">
 
-  <div class="tool-icon">🗜️</div>
+<div class="tool-icon">⚡</div>
 
-  <h3>Image Compressor</h3>
+<h3>Image Compressor</h3>
 
-  <p>
-    Compress JPG, PNG and other images to reduce file size
-    while maintaining useful image quality.
-  </p>
+<p>
+Reduce image file size while keeping good visual quality.
+</p>
 
-  <button onclick="showTool('compressBox')">
-    Open Tool
-  </button>
+<button class="open-btn" onclick="showTool('compressor')">
+Open Tool
+</button>
 
 </div>
 
 
+<!-- 2 -->
+
 <div class="tool-card">
 
-  <div class="tool-icon">📐</div>
+<div class="tool-icon">↔</div>
 
-  <h3>Image Resizer</h3>
+<h3>Image Resizer</h3>
 
-  <p>
-    Resize an image to your required width and height in pixels.
-  </p>
+<p>
+Change image width and height quickly.
+</p>
 
-  <button onclick="showTool('resizeBox')">
-    Open Tool
-  </button>
+<button class="open-btn" onclick="showTool('resizer')">
+Open Tool
+</button>
 
 </div>
 
 
+<!-- 3 -->
+
 <div class="tool-card">
 
-  <div class="tool-icon">✂️</div>
+<div class="tool-icon">✂</div>
 
-  <h3>Image Cropper</h3>
+<h3>Image Cropper</h3>
 
-  <p>
-    Crop the center area of an image using custom dimensions.
-  </p>
+<p>
+Crop an image to your required dimensions.
+</p>
 
-  <button onclick="showTool('cropBox')">
-    Open Tool
-  </button>
+<button class="open-btn" onclick="showTool('cropper')">
+Open Tool
+</button>
 
 </div>
 
 
+<!-- 4 -->
+
 <div class="tool-card">
 
-  <div class="tool-icon">🔄</div>
+<div class="tool-icon">🔄</div>
 
-  <h3>Image Converter</h3>
+<h3>Image Converter</h3>
 
-  <p>
-    Convert images between JPG, PNG and WebP formats.
-  </p>
+<p>
+Convert JPG, PNG and WebP image formats.
+</p>
 
-  <button onclick="showTool('convertBox')">
-    Open Tool
-  </button>
+<button class="open-btn" onclick="showTool('converter')">
+Open Tool
+</button>
 
 </div>
 
 
+<!-- 5 -->
+
 <div class="tool-card">
 
-  <div class="tool-icon">📊</div>
+<div class="tool-icon">ⓘ</div>
 
-  <h3>Image Information</h3>
+<h3>Image Information</h3>
 
-  <p>
-    Check image dimensions, file size, file name and image type.
-  </p>
+<p>
+Check image dimensions, format and file size.
+</p>
 
-  <button onclick="showTool('infoBox')">
-    Open Tool
-  </button>
+<button class="open-btn" onclick="showTool('info')">
+Open Tool
+</button>
 
 </div>
 
 
+<!-- 6 -->
+
 <div class="tool-card">
 
-  <div class="tool-icon">📱</div>
+<div class="tool-icon">📱</div>
 
-  <h3>Social Media Resizer</h3>
+<h3>Social Media Resizer</h3>
 
-  <p>
-    Resize images for Instagram, YouTube, Facebook and X.
-  </p>
+<p>
+Resize images for popular social media dimensions.
+</p>
 
-  <button onclick="showTool('socialBox')">
-    Open Tool
-  </button>
+<button class="open-btn" onclick="showTool('social')">
+Open Tool
+</button>
 
 </div>
 
 
+<!-- 7 -->
+
 <div class="tool-card">
 
-  <div class="tool-icon">🖼️</div>
+<div class="tool-icon">🪄</div>
 
-  <h3>Background Remover</h3>
+<h3>Background Remover</h3>
 
-  <p>
-    Remove a simple background color and create a transparent PNG.
-  </p>
+<p>
+Remove simple backgrounds from images in your browser.
+</p>
 
-  <button onclick="showTool('backgroundBox')">
-    Open Tool
-  </button>
+<button class="open-btn" onclick="showTool('background')">
+Open Tool
+</button>
 
 </div>
 
 
+<!-- 8 -->
+
 <div class="tool-card">
 
-  <div class="tool-icon">🎨</div>
+<div class="tool-icon">🎨</div>
 
-  <h3>Image Color Picker</h3>
+<h3>Image Color Picker</h3>
 
-  <p>
-    Click an image to instantly find HEX and RGB color values.
-  </p>
+<p>
+Click an image to pick colors and get HEX and RGB values.
+</p>
 
-  <button onclick="showTool('colorBox')">
-    Open Tool
-  </button>
+<button class="open-btn" onclick="showTool('colorpicker')">
+Open Tool
+</button>
 
 </div>
 
+
+</div>
 
 </div>
 
 </section>
+
+
+<section class="tool-area">
+
+<div class="container">
 
 
 <!-- COMPRESSOR -->
 
-<section id="compressBox" class="tool-box hidden">
+<div class="tool-box" id="compressor">
 
-<h2>🗜️ Image Compressor</h2>
+<button class="close-btn" onclick="closeTools()">✕</button>
 
-<p>Reduce image file size with adjustable JPEG quality.</p>
+<h2>Image Compressor</h2>
 
-<input type="file" id="compressInput" accept="image/*">
+<p>Compress your image directly in your browser.</p>
+
+<div class="field">
+
+<label>Select Image</label>
+
+<input type="file" id="compressFile" accept="image/*">
+
+</div>
+
+<div class="field">
 
 <label>
-Quality: <span id="qualityText">70%</span>
+Quality: <span id="qualityText">80%</span>
 </label>
 
-<input type="range" id="quality" min="10" max="100" value="70">
+<input
+type="range"
+id="quality"
+min="10"
+max="100"
+value="80"
+oninput="updateQuality()">
 
-<button onclick="compressImage()">Compress Image</button>
+</div>
 
-<div id="compressResult" class="result"></div>
+<button class="action-btn" onclick="compressImage()">
+Compress Image
+</button>
 
-</section>
+<div class="result" id="compressResult"></div>
+
+</div>
 
 
 <!-- RESIZER -->
 
-<section id="resizeBox" class="tool-box hidden">
+<div class="tool-box" id="resizer">
 
-<h2>📐 Image Resizer</h2>
+<button class="close-btn" onclick="closeTools()">✕</button>
 
-<p>Resize your image to an exact width and height.</p>
+<h2>Image Resizer</h2>
 
-<input type="file" id="resizeInput" accept="image/*">
+<p>Resize an image to your desired width and height.</p>
+
+<input type="file" id="resizeFile" accept="image/*">
+
+<div class="two-columns">
+
+<div class="field">
 
 <label>Width (px)</label>
 
-<input type="number" id="resizeWidth" placeholder="Example: 1080">
+<input type="number" id="resizeWidth" placeholder="e.g. 1000">
+
+</div>
+
+<div class="field">
 
 <label>Height (px)</label>
 
-<input type="number" id="resizeHeight" placeholder="Example: 1080">
+<input type="number" id="resizeHeight" placeholder="e.g. 1000">
 
-<button onclick="resizeImage()">Resize Image</button>
+</div>
 
-<div id="resizeResult" class="result"></div>
+</div>
 
-</section>
+<button class="action-btn" onclick="resizeImage()">
+Resize Image
+</button>
+
+<div class="result" id="resizeResult"></div>
+
+</div>
 
 
 <!-- CROPPER -->
 
-<section id="cropBox" class="tool-box hidden">
+<div class="tool-box" id="cropper">
 
-<h2>✂️ Image Cropper</h2>
+<button class="close-btn" onclick="closeTools()">✕</button>
 
-<p>Crop the center area using your desired dimensions.</p>
+<h2>Image Cropper</h2>
 
-<input type="file" id="cropInput" accept="image/*">
+<p>Crop the center of an image according to your required size.</p>
+
+<input type="file" id="cropFile" accept="image/*">
+
+<div class="two-columns">
+
+<div class="field">
 
 <label>Crop Width</label>
 
-<input type="number" id="cropWidth" placeholder="Example: 500">
+<input type="number" id="cropWidth" placeholder="800">
+
+</div>
+
+<div class="field">
 
 <label>Crop Height</label>
 
-<input type="number" id="cropHeight" placeholder="Example: 500">
+<input type="number" id="cropHeight" placeholder="800">
 
-<button onclick="cropImage()">Crop Image</button>
+</div>
 
-<div id="cropResult" class="result"></div>
+</div>
 
-</section>
+<button class="action-btn" onclick="cropImage()">
+Crop Image
+</button>
+
+<div class="result" id="cropResult"></div>
+
+</div>
 
 
 <!-- CONVERTER -->
 
-<section id="convertBox" class="tool-box hidden">
+<div class="tool-box" id="converter">
 
-<h2>🔄 Image Converter</h2>
+<button class="close-btn" onclick="closeTools()">✕</button>
 
-<p>Convert your image between JPG, PNG and WebP.</p>
+<h2>Image Converter</h2>
 
-<input type="file" id="convertInput" accept="image/*">
+<p>Convert your image into JPG, PNG or WebP.</p>
 
-<label>Output Format</label>
+<input type="file" id="convertFile" accept="image/*">
 
-<select id="format">
+<div class="field">
 
-<option value="image/jpeg">JPG</option>
+<label>Convert To</label>
+
+<select id="convertFormat">
 
 <option value="image/png">PNG</option>
+
+<option value="image/jpeg">JPG</option>
 
 <option value="image/webp">WebP</option>
 
 </select>
 
-<button onclick="convertImage()">Convert Image</button>
+</div>
 
-<div id="convertResult" class="result"></div>
+<button class="action-btn" onclick="convertImage()">
+Convert Image
+</button>
 
-</section>
+<div class="result" id="convertResult"></div>
+
+</div>
 
 
 <!-- INFO -->
 
-<section id="infoBox" class="tool-box hidden">
+<div class="tool-box" id="info">
 
-<h2>📊 Image Information</h2>
+<button class="close-btn" onclick="closeTools()">✕</button>
 
-<p>View basic information about your selected image.</p>
+<h2>Image Information</h2>
 
-<input type="file" id="infoInput" accept="image/*">
+<p>Find important information about your image.</p>
 
-<button onclick="getImageInfo()">Check Information</button>
+<input type="file" id="infoFile" accept="image/*">
 
-<div id="infoResult" class="result"></div>
+<button class="action-btn" onclick="getImageInfo()">
+Check Information
+</button>
 
-</section>
+<div class="result" id="infoResult"></div>
+
+</div>
 
 
 <!-- SOCIAL -->
 
-<section id="socialBox" class="tool-box hidden">
+<div class="tool-box" id="social">
 
-<h2>📱 Social Media Resizer</h2>
+<button class="close-btn" onclick="closeTools()">✕</button>
 
-<p>Resize images for common social media dimensions.</p>
+<h2>Social Media Resizer</h2>
 
-<input type="file" id="socialInput" accept="image/*">
+<p>Resize images for common social media sizes.</p>
+
+<input type="file" id="socialFile" accept="image/*">
+
+<div class="field">
 
 <label>Choose Size</label>
 
 <select id="socialSize">
 
-<option value="1080,1080">Instagram Post — 1080 × 1080</option>
+<option value="1080,1080">Instagram Square — 1080 × 1080</option>
+
+<option value="1080,1350">Instagram Portrait — 1080 × 1350</option>
 
 <option value="1080,1920">Instagram Story — 1080 × 1920</option>
 
-<option value="1280,720">YouTube Thumbnail — 1280 × 720</option>
-
 <option value="1200,630">Facebook Post — 1200 × 630</option>
+
+<option value="1280,720">YouTube Thumbnail — 1280 × 720</option>
 
 <option value="1500,500">Twitter/X Header — 1500 × 500</option>
 
+<option value="1080,1920">TikTok — 1080 × 1920</option>
+
 </select>
 
-<button onclick="socialResize()">Resize Image</button>
+</div>
 
-<div id="socialResult" class="result"></div>
+<button class="action-btn" onclick="socialResize()">
+Resize for Social Media
+</button>
 
-</section>
+<div class="result" id="socialResult"></div>
+
+</div>
 
 
 <!-- BACKGROUND -->
 
-<section id="backgroundBox" class="tool-box hidden">
+<div class="tool-box" id="background">
 
-<h2>🖼️ Background Remover</h2>
+<button class="close-btn" onclick="closeTools()">✕</button>
 
-<p>
-Remove a simple background color from the image and create a transparent PNG.
-</p>
-
-<input type="file" id="backgroundInput" accept="image/*">
-
-<label>Color Tolerance</label>
-
-<input type="range" id="tolerance" min="5" max="100" value="35">
+<h2>Background Remover</h2>
 
 <p>
-Tolerance: <span id="toleranceText">35</span>
+This simple browser tool removes pixels similar to the top-left background color.
 </p>
 
-<button onclick="removeBackground()">Remove Background</button>
+<input type="file" id="bgFile" accept="image/*">
 
-<div id="backgroundResult" class="result"></div>
+<div class="field">
 
-</section>
+<label>
+Tolerance: <span id="toleranceText">50</span>
+</label>
+
+<input
+type="range"
+id="tolerance"
+min="10"
+max="150"
+value="50"
+oninput="updateTolerance()">
+
+</div>
+
+<button class="action-btn" onclick="removeBackground()">
+Remove Background
+</button>
+
+<div class="result" id="bgResult"></div>
+
+</div>
 
 
-<!-- COLOR -->
+<!-- COLOR PICKER -->
 
-<section id="colorBox" class="tool-box hidden">
+<div class="tool-box" id="colorpicker">
 
-<h2>🎨 Image Color Picker</h2>
+<button class="close-btn" onclick="closeTools()">✕</button>
+
+<h2>Image Color Picker</h2>
 
 <p>
-Upload an image and click any point to get its HEX and RGB color.
+Upload an image and click anywhere on it to pick a color.
 </p>
 
-<input type="file" id="colorInput" accept="image/*">
+<input type="file" id="colorFile" accept="image/*">
 
-<div class="color-area">
+<div class="result" id="colorResult">
 
-<canvas id="colorCanvas"></canvas>
-
-<div id="colorResult" class="color-result">
-
-<p>Upload an image, then click on it to select a color.</p>
+<p>
+Upload an image to start color picking.
+</p>
 
 </div>
 
 </div>
 
-</section>
 
-
-<!-- ABOUT -->
-
-<section class="about">
-
-<h2>About PixelKit Tools</h2>
-
-<p>
-PixelKit Tools is a free online image toolkit created to make
-common image editing tasks simple and accessible.
-</p>
-
-<p>
-You can compress, resize, crop, convert and inspect images
-without installing complicated desktop software.
-</p>
-
-<p>
-The website also provides useful tools for social media image
-sizes, simple background removal and image color picking.
-</p>
-
-<h3>🔒 Privacy-Friendly Processing</h3>
-
-<p>
-Where supported, image processing happens directly inside your
-web browser. This means your selected image does not need to be
-sent to a remote image-processing server.
-</p>
+</div>
 
 </section>
 
 
-<!-- FAQ -->
+<section class="info-section" id="about">
 
-<section class="faq">
+<div class="container">
+
+<div class="info-content">
+
+<h2>What is PixelKit Tools?</h2>
+
+<p>
+PixelKit Tools is a free online collection of useful image utilities.
+You can compress, resize, crop, convert and inspect images without installing complicated software.
+</p>
+
+<h2>Free Image Processing</h2>
+
+<p>
+Our tools are designed to make common image tasks simple and accessible.
+Most processing happens directly inside your browser.
+</p>
+
+<h2>Supported Image Formats</h2>
+
+<p>
+PixelKit Tools works with common image formats such as JPG, JPEG, PNG and WebP.
+</p>
+
+<h2>Privacy Friendly</h2>
+
+<p>
+The browser-based tools process images locally whenever possible, so your images do not need to be uploaded to a server for these basic operations.
+</p>
 
 <h2>Frequently Asked Questions</h2>
 
-
-<div class="faq-item">
-
-<h3>Is PixelKit Tools free?</h3>
+<p>
+<strong>Is PixelKit Tools free?</strong><br>
+Yes. The tools are free to use.
+</p>
 
 <p>
-Yes. PixelKit Tools provides free browser-based image tools.
+<strong>Do I need an account?</strong><br>
+No account or registration is required for the basic tools.
+</p>
+
+<p>
+<strong>Can I use PixelKit Tools on mobile?</strong><br>
+Yes. The website is responsive and can be used on smartphones, tablets and computers.
 </p>
 
 </div>
 
-
-<div class="faq-item">
-
-<h3>Can I compress images online?</h3>
-
-<p>
-Yes. The Image Compressor lets you select an image and adjust
-the compression quality before downloading the result.
-</p>
-
 </div>
-
-
-<div class="faq-item">
-
-<h3>Can I resize an image?</h3>
-
-<p>
-Yes. The Image Resizer lets you enter custom width and height
-values in pixels.
-</p>
-
-</div>
-
-
-<div class="faq-item">
-
-<h3>Can I convert JPG to PNG?</h3>
-
-<p>
-Yes. The Image Converter supports JPG, PNG and WebP formats.
-</p>
-
-</div>
-
-
-<div class="faq-item">
-
-<h3>Can I resize images for social media?</h3>
-
-<p>
-Yes. The Social Media Resizer includes common Instagram,
-YouTube, Facebook and X image dimensions.
-</p>
-
-</div>
-
-
-<div class="faq-item">
-
-<h3>Are my images uploaded to a server?</h3>
-
-<p>
-The image-processing functions on this page are designed to
-process images directly in your browser.
-</p>
-
-</div>
-
 
 </section>
-
 
 </main>
 
 
 <footer>
 
-<p>
-<strong>PixelKit Tools</strong> — Free Online Image Tools
-</p>
+<div class="container">
 
 <p>
-Compressor • Resizer • Cropper • Converter • Color Picker • More
+© 2026 <strong>PixelKit Tools</strong> — Free Online Image Tools
 </p>
 
-<p>
-© 2026 PixelKit Tools. All Rights Reserved.
-</p>
+</div>
 
 </footer>
 
 
 <script>
 
-
-/* SHOW TOOL */
+/* =========================
+   TOOL NAVIGATION
+========================= */
 
 function showTool(id){
 
-  document.querySelectorAll(".tool-box").forEach(function(box){
+    var boxes = document.querySelectorAll(".tool-box");
 
-    box.classList.add("hidden");
+    boxes.forEach(function(box){
+        box.classList.remove("active");
+    });
 
-  });
+    var selected = document.getElementById(id);
 
-  const selected = document.getElementById(id);
+    if(selected){
 
-  if(selected){
+        selected.classList.add("active");
 
-    selected.classList.remove("hidden");
+        setTimeout(function(){
 
-    setTimeout(function(){
+            selected.scrollIntoView({
+                behavior:"smooth",
+                block:"start"
+            });
 
-      selected.scrollIntoView({
-        behavior:"smooth",
-        block:"start"
-      });
-
-    },50);
-
-  }
-
+        },50);
+    }
 }
 
 
-/* QUALITY */
+function closeTools(){
 
-const qualitySlider =
-document.getElementById("quality");
+    var boxes = document.querySelectorAll(".tool-box");
 
-qualitySlider.addEventListener("input",function(){
+    boxes.forEach(function(box){
+        box.classList.remove("active");
+    });
 
-  document.getElementById("qualityText").textContent =
-  this.value + "%";
-
-});
-
-
-/* TOLERANCE */
-
-const toleranceSlider =
-document.getElementById("tolerance");
-
-toleranceSlider.addEventListener("input",function(){
-
-  document.getElementById("toleranceText").textContent =
-  this.value;
-
-});
-
-
-/* HELPER */
-
-function loadImage(file,callback){
-
-  const reader = new FileReader();
-
-  reader.onload = function(e){
-
-    const img = new Image();
-
-    img.onload = function(){
-
-      callback(img);
-
-    };
-
-    img.onerror = function(){
-
-      alert("Could not load this image. Please try another image.");
-
-    };
-
-    img.src = e.target.result;
-
-  };
-
-  reader.readAsDataURL(file);
-
+    document.getElementById("tools").scrollIntoView({
+        behavior:"smooth"
+    });
 }
 
 
-/* COMPRESSOR */
+/* =========================
+   QUALITY
+========================= */
 
-function compressImage(){
+function updateQuality(){
 
-  const input =
-  document.getElementById("compressInput");
+    var value = document.getElementById("quality").value;
 
-  const result =
-  document.getElementById("compressResult");
-
-  if(!input.files.length){
-
-    result.innerHTML =
-    "<p>Please select an image first.</p>";
-
-    return;
-
-  }
-
-  const file = input.files[0];
-
-  loadImage(file,function(img){
-
-    const canvas =
-    document.createElement("canvas");
-
-    canvas.width = img.width;
-    canvas.height = img.height;
-
-    const ctx =
-    canvas.getContext("2d");
-
-    ctx.drawImage(img,0,0);
-
-    canvas.toBlob(function(blob){
-
-      if(!blob){
-
-        result.innerHTML =
-        "<p>Compression failed. Please try another image.</p>";
-
-        return;
-
-      }
-
-      const url =
-      URL.createObjectURL(blob);
-
-      const oldSize =
-      (file.size / 1024).toFixed(1);
-
-      const newSize =
-      (blob.size / 1024).toFixed(1);
-
-      result.innerHTML =
-
-      "<p><b>Original:</b> " +
-      oldSize +
   
