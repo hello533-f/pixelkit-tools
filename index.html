@@ -6,6 +6,8 @@
 
 <title>PixelKit Tools - Free Online Image Tools</title>
 
+<meta name="google-site-verification" content="r9wi5lSCehY19MbiDT2Uy47NDob3hTKrzY2qcbuhWv0" />
+
 <meta name="description" content="PixelKit Tools offers free online image compressor, resizer, cropper, converter and image information tools. Fast, simple and privacy-friendly.">
 
 <meta name="keywords" content="image compressor, image resizer, image converter, jpg to png, png to jpg, webp converter, image cropper, free image tools">
@@ -147,11 +149,6 @@ button:hover,
   background:#333;
 }
 
-.secondary{
-  background:#f5c542;
-  color:#111;
-}
-
 .preview{
   max-width:100%;
   max-height:350px;
@@ -170,22 +167,6 @@ button:hover,
   padding:15px;
   border-radius:10px;
   margin-top:15px;
-}
-
-.social-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-  gap:10px;
-  margin-top:15px;
-}
-
-.social-btn{
-  background:#eee;
-  color:#222;
-  padding:12px;
-  border-radius:8px;
-  cursor:pointer;
-  text-align:center;
 }
 
 .about{
@@ -210,11 +191,6 @@ footer{
   text-align:center;
   padding:25px 15px;
   margin-top:30px;
-}
-
-footer a{
-  color:#f5c542;
-  text-decoration:none;
 }
 
 .hidden{
@@ -253,9 +229,6 @@ footer a{
     Simple, fast and privacy-friendly tools.
   </p>
 </section>
-
-
-<!-- TOOL MENU -->
 
 <section class="tools-grid">
 
@@ -297,9 +270,6 @@ footer a{
 
 </section>
 
-
-<!-- COMPRESSOR -->
-
 <section id="compressBox" class="tool-box hidden">
 
 <h2>🗜️ Image Compressor</h2>
@@ -318,9 +288,6 @@ Quality: <span id="qualityText">70%</span>
 <div id="compressResult" class="result"></div>
 
 </section>
-
-
-<!-- RESIZER -->
 
 <section id="resizeBox" class="tool-box hidden">
 
@@ -341,9 +308,6 @@ Quality: <span id="qualityText">70%</span>
 
 </section>
 
-
-<!-- CROPPER -->
-
 <section id="cropBox" class="tool-box hidden">
 
 <h2>✂️ Image Cropper</h2>
@@ -362,9 +326,6 @@ Quality: <span id="qualityText">70%</span>
 <div id="cropResult" class="result"></div>
 
 </section>
-
-
-<!-- CONVERTER -->
 
 <section id="convertBox" class="tool-box hidden">
 
@@ -387,9 +348,6 @@ Quality: <span id="qualityText">70%</span>
 
 </section>
 
-
-<!-- IMAGE INFORMATION -->
-
 <section id="infoBox" class="tool-box hidden">
 
 <h2>📊 Image Information</h2>
@@ -403,9 +361,6 @@ Quality: <span id="qualityText">70%</span>
 
 </section>
 
-
-<!-- SOCIAL MEDIA -->
-
 <section id="socialBox" class="tool-box hidden">
 
 <h2>📱 Social Media Resizer</h2>
@@ -414,17 +369,11 @@ Quality: <span id="qualityText">70%</span>
 <input type="file" id="socialInput" accept="image/*">
 
 <select id="socialSize">
-
 <option value="1080,1080">Instagram Post — 1080 × 1080</option>
-
 <option value="1080,1920">Instagram Story — 1080 × 1920</option>
-
 <option value="1280,720">YouTube Thumbnail — 1280 × 720</option>
-
 <option value="1200,630">Facebook Post — 1200 × 630</option>
-
 <option value="1500,500">Twitter/X Header — 1500 × 500</option>
-
 </select>
 
 <button onclick="socialResize()">Resize Image</button>
@@ -432,9 +381,6 @@ Quality: <span id="qualityText">70%</span>
 <div id="socialResult" class="result"></div>
 
 </section>
-
-
-<!-- ABOUT -->
 
 <section class="about">
 
@@ -458,14 +404,12 @@ Where possible, image processing happens directly in your browser.
 
 <p>
 Your selected images are processed locally in your browser for
-the tools on this page. We do not need a paid server for these
-basic operations.
+the tools on this page.
 </p>
 
 </section>
 
 </main>
-
 
 <footer>
 
@@ -477,10 +421,7 @@ Free Image Compressor • Image Resizer • Image Converter
 
 </footer>
 
-
 <script>
-
-/* SHOW TOOL */
 
 function showTool(id){
 
@@ -497,9 +438,6 @@ function showTool(id){
   });
 }
 
-
-/* QUALITY SLIDER */
-
 const qualitySlider = document.getElementById("quality");
 
 qualitySlider.addEventListener("input",function(){
@@ -509,23 +447,206 @@ qualitySlider.addEventListener("input",function(){
 
 });
 
-
-/* COMPRESS IMAGE */
-
 function compressImage(){
 
   const input = document.getElementById("compressInput");
   const result = document.getElementById("compressResult");
 
   if(!input.files.length){
-
-    result.innerHTML =
-    "<p>Please select an image first.</p>";
-
+    result.innerHTML = "<p>Please select an image first.</p>";
     return;
   }
 
   const file = input.files[0];
+  const reader = new FileReader();
+
+  reader.onload = function(e){
+
+    const img = new Image();
+
+    img.onload = function(){
+
+      const canvas = document.createElement("canvas");
+
+      canvas.width = img.width;
+      canvas.height = img.height;
+
+      const ctx = canvas.getContext("2d");
+
+      ctx.drawImage(img,0,0);
+
+      canvas.toBlob(function(blob){
+
+        const url = URL.createObjectURL(blob);
+
+        const oldSize = (file.size / 1024).toFixed(1);
+        const newSize = (blob.size / 1024).toFixed(1);
+
+        result.innerHTML =
+        "<p><b>Original:</b> " + oldSize + " KB</p>" +
+        "<p><b>Compressed:</b> " + newSize + " KB</p>" +
+        "<img class='preview' src='" + url + "'>" +
+        "<a class='download' href='" + url +
+        "' download='pixelkit-compressed.jpg'>" +
+        "⬇️ Download Image</a>";
+
+      },"image/jpeg",qualitySlider.value / 100);
+
+    };
+
+    img.src = e.target.result;
+
+  };
+
+  reader.readAsDataURL(file);
+}
+
+function resizeImage(){
+
+  const input = document.getElementById("resizeInput");
+  const result = document.getElementById("resizeResult");
+
+  const width =
+  parseInt(document.getElementById("resizeWidth").value);
+
+  const height =
+  parseInt(document.getElementById("resizeHeight").value);
+
+  if(!input.files.length){
+    result.innerHTML = "<p>Please select an image first.</p>";
+    return;
+  }
+
+  if(!width || !height || width < 1 || height < 1){
+    result.innerHTML = "<p>Please enter valid width and height.</p>";
+    return;
+  }
+
+  const reader = new FileReader();
+
+  reader.onload = function(e){
+
+    const img = new Image();
+
+    img.onload = function(){
+
+      const canvas = document.createElement("canvas");
+
+      canvas.width = width;
+      canvas.height = height;
+
+      const ctx = canvas.getContext("2d");
+
+      ctx.drawImage(img,0,0,width,height);
+
+      canvas.toBlob(function(blob){
+
+        const url = URL.createObjectURL(blob);
+
+        result.innerHTML =
+        "<p>New size: " + width + " × " + height + " px</p>" +
+        "<img class='preview' src='" + url + "'>" +
+        "<a class='download' href='" + url +
+        "' download='pixelkit-resized.jpg'>" +
+        "⬇️ Download Image</a>";
+
+      },"image/jpeg",0.90);
+
+    };
+
+    img.src = e.target.result;
+
+  };
+
+  reader.readAsDataURL(input.files[0]);
+}
+
+function cropImage(){
+
+  const input = document.getElementById("cropInput");
+  const result = document.getElementById("cropResult");
+
+  const width =
+  parseInt(document.getElementById("cropWidth").value);
+
+  const height =
+  parseInt(document.getElementById("cropHeight").value);
+
+  if(!input.files.length){
+    result.innerHTML = "<p>Please select an image first.</p>";
+    return;
+  }
+
+  if(!width || !height){
+    result.innerHTML = "<p>Please enter crop width and height.</p>";
+    return;
+  }
+
+  const reader = new FileReader();
+
+  reader.onload = function(e){
+
+    const img = new Image();
+
+    img.onload = function(){
+
+      const cropW = Math.min(width,img.width);
+      const cropH = Math.min(height,img.height);
+
+      const canvas = document.createElement("canvas");
+
+      canvas.width = cropW;
+      canvas.height = cropH;
+
+      const ctx = canvas.getContext("2d");
+
+      const x = (img.width - cropW) / 2;
+      const y = (img.height - cropH) / 2;
+
+      ctx.drawImage(
+        img,
+        x,
+        y,
+        cropW,
+        cropH,
+        0,
+        0,
+        cropW,
+        cropH
+      );
+
+      canvas.toBlob(function(blob){
+
+        const url = URL.createObjectURL(blob);
+
+        result.innerHTML =
+        "<p>Cropped image: " + cropW + " × " + cropH + " px</p>" +
+        "<img class='preview' src='" + url + "'>" +
+        "<a class='download' href='" + url +
+        "' download='pixelkit-cropped.jpg'>" +
+        "⬇️ Download Image</a>";
+
+      },"image/jpeg",0.90);
+
+    };
+
+    img.src = e.target.result;
+
+  };
+
+  reader.readAsDataURL(input.files[0]);
+}
+
+function convertImage(){
+
+  const input = document.getElementById("convertInput");
+  const format = document.getElementById("format").value;
+  const result = document.getElementById("convertResult");
+
+  if(!input.files.length){
+    result.innerHTML = "<p>Please select an image first.</p>";
+    return;
+  }
 
   const reader = new FileReader();
 
@@ -548,316 +669,16 @@ function compressImage(){
 
         const url = URL.createObjectURL(blob);
 
-        const oldSize =
-        (file.size / 1024).toFixed(1);
-
-        const newSize =
-        (blob.size / 1024).toFixed(1);
-
-        result.innerHTML =
-
-        "<p><b>Original:</b> " +
-        oldSize +
-        " KB</p>" +
-
-        "<p><b>Compressed:</b> " +
-        newSize +
-        " KB</p>" +
-
-        "<img class='preview' src='" +
-        url +
-        "'>" +
-
-        "<a class='download' href='" +
-        url +
-        "' download='pixelkit-compressed.jpg'>" +
-
-        "⬇️ Download Image</a>";
-
-      },"image/jpeg",
-      qualitySlider.value / 100);
-
-    };
-
-    img.src = e.target.result;
-
-  };
-
-  reader.readAsDataURL(file);
-
-}
-
-
-/* RESIZE IMAGE */
-
-function resizeImage(){
-
-  const input =
-  document.getElementById("resizeInput");
-
-  const result =
-  document.getElementById("resizeResult");
-
-  const width =
-  parseInt(document.getElementById("resizeWidth").value);
-
-  const height =
-  parseInt(document.getElementById("resizeHeight").value);
-
-  if(!input.files.length){
-
-    result.innerHTML =
-    "<p>Please select an image first.</p>";
-
-    return;
-  }
-
-  if(!width || !height || width < 1 || height < 1){
-
-    result.innerHTML =
-    "<p>Please enter valid width and height.</p>";
-
-    return;
-  }
-
-  const reader = new FileReader();
-
-  reader.onload = function(e){
-
-    const img = new Image();
-
-    img.onload = function(){
-
-      const canvas =
-      document.createElement("canvas");
-
-      canvas.width = width;
-      canvas.height = height;
-
-      const ctx =
-      canvas.getContext("2d");
-
-      ctx.drawImage(
-        img,
-        0,
-        0,
-        width,
-        height
-      );
-
-      canvas.toBlob(function(blob){
-
-        const url =
-        URL.createObjectURL(blob);
-
-        result.innerHTML =
-
-        "<p>New size: " +
-        width +
-        " × " +
-        height +
-        " px</p>" +
-
-        "<img class='preview' src='" +
-        url +
-        "'>" +
-
-        "<a class='download' href='" +
-        url +
-        "' download='pixelkit-resized.jpg'>" +
-
-        "⬇️ Download Image</a>";
-
-      },"image/jpeg",0.90);
-
-    };
-
-    img.src = e.target.result;
-
-  };
-
-  reader.readAsDataURL(input.files[0]);
-
-}
-
-
-/* CROP IMAGE */
-
-function cropImage(){
-
-  const input =
-  document.getElementById("cropInput");
-
-  const result =
-  document.getElementById("cropResult");
-
-  const width =
-  parseInt(document.getElementById("cropWidth").value);
-
-  const height =
-  parseInt(document.getElementById("cropHeight").value);
-
-  if(!input.files.length){
-
-    result.innerHTML =
-    "<p>Please select an image first.</p>";
-
-    return;
-  }
-
-  if(!width || !height){
-
-    result.innerHTML =
-    "<p>Please enter crop width and height.</p>";
-
-    return;
-  }
-
-  const reader = new FileReader();
-
-  reader.onload = function(e){
-
-    const img = new Image();
-
-    img.onload = function(){
-
-      const cropW =
-      Math.min(width,img.width);
-
-      const cropH =
-      Math.min(height,img.height);
-
-      const canvas =
-      document.createElement("canvas");
-
-      canvas.width = cropW;
-      canvas.height = cropH;
-
-      const ctx =
-      canvas.getContext("2d");
-
-      const x =
-      (img.width - cropW) / 2;
-
-      const y =
-      (img.height - cropH) / 2;
-
-      ctx.drawImage(
-        img,
-        x,
-        y,
-        cropW,
-        cropH,
-        0,
-        0,
-        cropW,
-        cropH
-      );
-
-      canvas.toBlob(function(blob){
-
-        const url =
-        URL.createObjectURL(blob);
-
-        result.innerHTML =
-
-        "<p>Cropped image: " +
-        cropW +
-        " × " +
-        cropH +
-        " px</p>" +
-
-        "<img class='preview' src='" +
-        url +
-        "'>" +
-
-        "<a class='download' href='" +
-        url +
-        "' download='pixelkit-cropped.jpg'>" +
-
-        "⬇️ Download Image</a>";
-
-      },"image/jpeg",0.90);
-
-    };
-
-    img.src = e.target.result;
-
-  };
-
-  reader.readAsDataURL(input.files[0]);
-
-}
-
-
-/* CONVERT IMAGE */
-
-function convertImage(){
-
-  const input =
-  document.getElementById("convertInput");
-
-  const format =
-  document.getElementById("format").value;
-
-  const result =
-  document.getElementById("convertResult");
-
-  if(!input.files.length){
-
-    result.innerHTML =
-    "<p>Please select an image first.</p>";
-
-    return;
-  }
-
-  const reader =
-  new FileReader();
-
-  reader.onload = function(e){
-
-    const img = new Image();
-
-    img.onload = function(){
-
-      const canvas =
-      document.createElement("canvas");
-
-      canvas.width = img.width;
-      canvas.height = img.height;
-
-      const ctx =
-      canvas.getContext("2d");
-
-      ctx.drawImage(img,0,0);
-
-      canvas.toBlob(function(blob){
-
-        const url =
-        URL.createObjectURL(blob);
-
         let extension = "jpg";
 
-        if(format === "image/png")
-        extension = "png";
-
-        if(format === "image/webp")
-        extension = "webp";
+        if(format === "image/png") extension = "png";
+        if(format === "image/webp") extension = "webp";
 
         result.innerHTML =
-
-        "<img class='preview' src='" +
-        url +
-        "'>" +
-
-        "<a class='download' href='" +
-        url +
-        "' download='pixelkit-image." +
-        extension +
-        "'>" +
-
-        "⬇️ Download " +
-        extension.toUpperCase() +
+        "<img class='preview' src='" + url + "'>" +
+        "<a class='download' href='" + url +
+        "' download='pixelkit-image." + extension + "'>" +
+        "⬇️ Download " + extension.toUpperCase() +
         "</a>";
 
       },format,0.90);
@@ -869,72 +690,37 @@ function convertImage(){
   };
 
   reader.readAsDataURL(input.files[0]);
-
 }
-
-
-/* IMAGE INFORMATION */
 
 function getImageInfo(){
 
-  const input =
-  document.getElementById("infoInput");
-
-  const result =
-  document.getElementById("infoResult");
+  const input = document.getElementById("infoInput");
+  const result = document.getElementById("infoResult");
 
   if(!input.files.length){
-
-    result.innerHTML =
-    "<p>Please select an image first.</p>";
-
+    result.innerHTML = "<p>Please select an image first.</p>";
     return;
   }
 
-  const file =
-  input.files[0];
-
-  const reader =
-  new FileReader();
+  const file = input.files[0];
+  const reader = new FileReader();
 
   reader.onload = function(e){
 
-    const img =
-    new Image();
+    const img = new Image();
 
     img.onload = function(){
 
-      const sizeKB =
-      (file.size / 1024).toFixed(2);
+      const sizeKB = (file.size / 1024).toFixed(2);
 
       result.innerHTML =
-
       "<div class='info'>" +
-
-      "<p><b>File name:</b> " +
-      file.name +
-      "</p>" +
-
-      "<p><b>File type:</b> " +
-      file.type +
-      "</p>" +
-
-      "<p><b>File size:</b> " +
-      sizeKB +
-      " KB</p>" +
-
-      "<p><b>Width:</b> " +
-      img.width +
-      " px</p>" +
-
-      "<p><b>Height:</b> " +
-      img.height +
-      " px</p>" +
-
-      "<img class='preview' src='" +
-      e.target.result +
-      "'>" +
-
+      "<p><b>File name:</b> " + file.name + "</p>" +
+      "<p><b>File type:</b> " + file.type + "</p>" +
+      "<p><b>File size:</b> " + sizeKB + " KB</p>" +
+      "<p><b>Width:</b> " + img.width + " px</p>" +
+      "<p><b>Height:</b> " + img.height + " px</p>" +
+      "<img class='preview' src='" + e.target.result + "'>" +
       "</div>";
 
     };
@@ -944,56 +730,38 @@ function getImageInfo(){
   };
 
   reader.readAsDataURL(file);
-
 }
-
-
-/* SOCIAL MEDIA RESIZER */
 
 function socialResize(){
 
-  const input =
-  document.getElementById("socialInput");
-
-  const result =
-  document.getElementById("socialResult");
+  const input = document.getElementById("socialInput");
+  const result = document.getElementById("socialResult");
 
   const values =
-  document.getElementById("socialSize")
-  .value.split(",");
+  document.getElementById("socialSize").value.split(",");
 
-  const width =
-  parseInt(values[0]);
-
-  const height =
-  parseInt(values[1]);
+  const width = parseInt(values[0]);
+  const height = parseInt(values[1]);
 
   if(!input.files.length){
-
-    result.innerHTML =
-    "<p>Please select an image first.</p>";
-
+    result.innerHTML = "<p>Please select an image first.</p>";
     return;
   }
 
-  const reader =
-  new FileReader();
+  const reader = new FileReader();
 
   reader.onload = function(e){
 
-    const img =
-    new Image();
+    const img = new Image();
 
     img.onload = function(){
 
-      const canvas =
-      document.createElement("canvas");
+      const canvas = document.createElement("canvas");
 
       canvas.width = width;
       canvas.height = height;
 
-      const ctx =
-      canvas.getContext("2d");
+      const ctx = canvas.getContext("2d");
 
       ctx.drawImage(
         img,
@@ -1005,25 +773,13 @@ function socialResize(){
 
       canvas.toBlob(function(blob){
 
-        const url =
-        URL.createObjectURL(blob);
+        const url = URL.createObjectURL(blob);
 
         result.innerHTML =
-
-        "<p>New dimensions: " +
-        width +
-        " × " +
-        height +
-        " px</p>" +
-
-        "<img class='preview' src='" +
-        url +
-        "'>" +
-
-        "<a class='download' href='" +
-        url +
+        "<p>New dimensions: " + width + " × " + height + " px</p>" +
+        "<img class='preview' src='" + url + "'>" +
+        "<a class='download' href='" + url +
         "' download='pixelkit-social-image.jpg'>" +
-
         "⬇️ Download Image</a>";
 
       },"image/jpeg",0.90);
@@ -1035,7 +791,6 @@ function socialResize(){
   };
 
   reader.readAsDataURL(input.files[0]);
-
 }
 
 </script>
