@@ -1,0 +1,102 @@
+input.addEventListener("change",function(){
+const file=input.files&&input.files[0];
+selectedImage=null;
+button.disabled=true;
+result.textContent="";
+downloadLink.style.display="none";
+
+if(originalUrl)URL.revokeObjectURL(originalUrl);
+if(outputUrl)URL.revokeObjectURL(outputUrl);
+originalUrl=null;
+outputUrl=null;
+
+if(!file)return;
+if(!["image/jpeg","image/png","image/webp"].includes(file.type)){
+result.textContent="Please select a JPG, PNG, or WebP image.";
+input.value="";
+return;
+}
+if(file.size>20*1024*1024){
+result.textContent="Please select an image smaller than 20 MB.";
+input.value="";
+return;
+}
+
+originalUrl=URL.createObjectURL(file);
+const image=new Image();
+
+image.onload=function(){
+selectedImage={image:image,file:file};
+preview.src=originalUrl;
+preview.style.display="block";
+button.disabled=false;
+result.textContent="Original size: "+formatBytes(file.size);
+};
+
+image.onerror=function(){
+result.textContent="Sorry, this image could not be opened.";
+};
+
+image.src=originalUrl;
+});
+
+button.addEventListener("click",function(){
+if(!selectedImage)return;
+
+button.disabled=true;
+result.textContent="Compressing image…";
+downloadLink.style.display="none";
+
+try{
+const image=selectedImage.image;
+const canvas=document.createElement("canvas");
+canvas.width=image.naturalWidth;
+canvas.height=image.naturalHeight;
+
+const context=canvas.getContext("2d");
+context.fillStyle="#ffffff";
+context.fillRect(0,0,canvas.width,canvas.height);
+context.drawImage(image,0,0);
+
+canvas.toBlob(function(blob){
+button.disabled=false;
+
+if(!blob){
+result.textContent="Compression failed. Please try another image.";
+return;
+}
+
+if(outputUrl)URL.revokeObjectURL(outputUrl);
+outputUrl=URL.createObjectURL(blob);
+
+downloadLink.href=outputUrl;
+downloadLink.download="pixelkit-compressed.jpg";
+downloadLink.style.display="block";
+
+const oldSize=selectedImage.file.size;
+const newSize=blob.size;
+const change=Math.round((1-newSize/oldSize)*100);
+
+result.textContent="Original: "+formatBytes(oldSize)+
+" · Compressed: "+formatBytes(newSize)+
+(change>=0?" · Size reduced by "+change+"%":" · Output is "+Math.abs(change)+"% larger");
+
+}, "image/jpeg", Number(quality.value)/100);
+
+}catch(error){
+button.disabled=false;
+result.textContent="Something went wrong. Please try again.";
+}
+});
+
+function formatBytes(bytes){
+if(bytes===0)return "0 Bytes";
+const units=["Bytes","KB","MB","GB"];
+const i=Math.floor(Math.log(bytes)/Math.log(1024));
+return (bytes/Math.pow(1024,i)).toFixed(2)+" "+units[i];
+}
+})();
+</script>
+
+</body>
+</html>
